@@ -2,19 +2,47 @@
 <html lang="ja">
     <head>
         <meta charset="UTF-8">
-        <title>ゆかの勉強部屋 > 公理的集合論1</title>
+        <title>集合論@ゆかの勉強部屋 </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/css/base.css">
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
         <script id="MathJax-script" async
                 src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     </head>
     <body>
-        <h1>公理的集合論1</h1>
-        <section>
-            <h1>集合論の公理</h1>
+        <header>
+            <hgroup>
+                <h2>集合論</h2>
+                <h1>ゆかの勉強部屋</h1>
+            </hgroup>
+        </header>
+        <article>
             <blockquote>
                 <p>「無矛盾な公理的集合論は自己そのものの無矛盾性を証明することができないから」</p>
-                &mdash;長門有希、<cite>笹の葉ラプソディ(涼宮ハルヒの退屈収録)</cite>より
+                <p>&mdash;長門有希の台詞、<cite>笹の葉ラプソディ(涼宮ハルヒの退屈収録)</cite>より</p>
             </blockquote>
-        </section>
+            <h1>集合論の公理系</h1>
+            <p>
+                集合を記号\(a,b,c,\dots\)や\(A,B,C,\dots\)などで、集合の要素関係を記号\(\in\)で表すことにします。
+                集合論の他の概念はこれらの記号を用いて定義しますが、これらの記号自体は未定義のままであることに注意してください(参考:<a href="https://en.wikipedia.org/wiki/Primitive_notion">primitive notion</a>)。
+            </p>
+            <p>
+                また、命題を簡潔に表現するためにいくつかの記号を導入します。
+                すなわち、命題\(p\)の否定を\(\neg p\)で、
+                「\(p\)または\(q\)」を\(p \vee q\)で、
+                「\(p\)かつ\(q\)」を\(p \wedge q\)で、
+                「\(p\)ならば\(q\)」を\(p \Rightarrow q\)で、
+                「\(p\)と\(q\)は同値」を\(p \Leftrightarrow q\)で、
+                「任意の\(x\)に対し\(P(x)\)である」を\(\forall x P(x)\)で、
+                「\(P(x)\)であるような\(x\)が存在する」を\(\exists x P(x)\)で表すことにします。
+            </p>
+            <section>
+                <h1>外延性公理</h1>
+                <p>
+                    \[ \forall A \forall B (\forall x \in A \Leftrightarrow x \in B) \Rightarrow A = B ) \]
+                    が成り立つ。
+                </p>
+            </section>
+        </article>
     </body>
 </html>
