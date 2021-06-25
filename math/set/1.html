@@ -34,14 +34,79 @@
                 「\(p\)ならば\(q\)」を\(p \Rightarrow q\)で、
                 「\(p\)と\(q\)は同値」を\(p \Leftrightarrow q\)で、
                 「任意の\(x\)に対し\(P(x)\)である」を\(\forall x P(x)\)で、
-                「\(P(x)\)であるような\(x\)が存在する」を\(\exists x P(x)\)で表すことにします。
+                「\(P(x)\)であるような\(x\)が存在する」を\(\exists x P(x)\)で、
+                「\(P(x)\)であるような\(x\)がただ一つ存在する」を\(\exists! x P(x)\)で表すことにします。
             </p>
-            <section>
-                <h1>外延性公理</h1>
+            <p>
+                次に、集合論の<em>公理</em>と呼ばれる命題を列挙していきます。なお、公理からの論理的帰結として導かれる命題のことを<em>定理</em>と言います。
+            </p>
+            <section class="axiom">
+                <h1>公理(外延性公理)</h1>
                 <p>
-                    \[ \forall A \forall B (\forall x \in A \Leftrightarrow x \in B) \Rightarrow A = B ) \]
-                    が成り立つ。
+                    \[ \forall A \forall B [\forall x (x \in A \Leftrightarrow x \in B) \Rightarrow A = B ]。 \]
+                    すなわち、2つの集合が全く同じ要素を持つならば、それらの集合は等しいということです。
                 </p>
+            </section>
+            <section class="axiom">
+                <h1>公理(空集合公理)</h1>
+                <p>
+                    \[ \exists S \forall x(x \not\in S)。 \]
+                    すなわち、要素を1つも持たない集合が存在するということです。
+                </p>
+                <p>
+                    なお、空集合公理は後に挙げる無限公理と分出公理から証明可能なので実のところ論理的には不要なのですが、議論の分かりやすさのために今は公理に含めておくことにします。
+                </p>
+            </section>
+            <p>外延性公理と空集合公理から次の定理が導かれます。</p>
+            <section class="theorem">
+                <h1>定理(空集合の一意性)</h1>
+                <p>
+                    \[ \exists! S \forall x(x \not\in S)。 \]
+                </p>
+                <section class="proof">
+                    <h1>証明</h1>
+                    <p>
+                        空集合公理\(\exists S \forall x(x \not\in S)\)を満たす\(S\)を2つ固定します(\(A\)及び\(B\)と名付けることにします)。
+                        \(x\)を任意に1つとり\(x \in A\)を仮定すると\(x \not\in A\)と矛盾するので\(x \in B\)を導くことができ、逆もまた同様です。
+                        従って\(\forall x (x \in A \Leftrightarrow x \in B)\)ですから、外延性公理によって\(A = B\)が導けます。
+                    </p>
+                </section>
+            </section>
+            <p>空集合の一意性が示せましたので、この集合を指す記号を新たに導入します。</p>
+            <section class="definition">
+                <h1>定義(空集合)</h1>
+                <p>\(\forall x(x \not\in S)\)を満たす唯一の集合\(S\)を空集合と言い、\(\emptyset\)と書くことにします。</p>
+            </section>
+            <section class="axiom">
+                <h1>公理(非順序対公理)</h1>
+                <p>
+                    \[ \forall a \forall b \exists S \forall x(x \in S \Leftrightarrow x = a \vee x = b)。 \]
+                    すなわち、集合\(a\)と\(b\)が与えられた時、\(a\)と\(b\)のみを要素とする集合が存在するということです。
+                </p>
+                <p>
+                    なお、非順序対公理は後に挙げる置換公理から証明可能なので論理的には不要ですが、議論の分かりやすさのためにこれも公理に含めておくことにします。
+                </p>
+            </section>
+            <section class="axiom">
+                <h1>定理(非順序対の一意性)</h1>
+                <p>
+                    \[ \forall a \forall b \exists! S \forall x(x \in S \Leftrightarrow x = a \vee x = b)。 \]
+                </p>
+                <section class="proof">
+                    <h1>証明</h1>
+                    <p>
+                        \(a\)と\(b\)を任意の集合とします。
+                        非順序対公理より\(\exists! S \forall x(x \in S \Leftrightarrow x = a \vee x = b)\)ですから、これを満たす\(S\)を2つ固定し、\(A\)及び\(B\)と名付けます。
+                        \(x\)を任意に1つとると、
+                        \[x \in A \iff x = a \vee x = b \iff x \in B \]
+                        ですから、外延性公理によって\(A = B\)が導けます。
+                    </p>
+                </section>
+            </section>
+            <p>非順序対の一意性が示せましたので、この集合を指す記号を新たに導入します。</p>
+            <section class="definition">
+                <h1>定義(非順序対)</h1>
+                <p>任意の\(a\)と\(b\)に対し、\(\forall x(x \in S \Leftrightarrow x = a \vee x = b)\)を満たす唯一の集合\(S\)を\(a\)と\(b\)の非順序対と言い、\(\{a,b\}\)と書くことにします。</p>
             </section>
         </article>
     </body>

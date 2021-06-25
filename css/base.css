@@ -43,8 +43,18 @@ h1 {
     margin: 0;
 }
 
-section h1 {
-    font-size: 1.1em;
+
+article > section h1 {
+    font-size: 1.2em;
+}
+
+section.proof h1 {
+    font-size: 1em;
+}
+
+section.proof:after {
+    display: block;
+    content: '∎';
 }
 
 body > article, body > nav, body > p, body > header > hgroup {
@@ -62,6 +72,11 @@ blockquote {
     padding: 0.1em 0.5em;
     background-color:lightgray;
     border-radius: 0.5em;
+}
+
+em {
+    font-weight: bold;
+    font-style: normal;
 }
 
 blockquote > p:last-child {
