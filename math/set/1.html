@@ -23,7 +23,7 @@
             </blockquote>
             <h1>集合論の公理系</h1>
             <p>
-                集合を記号\(a,b,c,\dots\)や\(A,B,C,\dots\)などで、集合の要素関係を記号\(\in\)で表すことにします。
+                集合を記号\(a,b,c,\dots\)や\(A,B,C,\dots\)や\(\mathscr{A,B,C,\dots}\)などで、集合の要素関係を記号\(\in\)で表すことにします。
                 集合論の他の概念はこれらの記号を用いて定義しますが、これらの記号自体は未定義のままであることに注意してください(参考:<a href="https://en.wikipedia.org/wiki/Primitive_notion">primitive notion</a>)。
             </p>
             <p>
@@ -33,9 +33,12 @@
                 「\(p\)かつ\(q\)」を\(p \wedge q\)で、
                 「\(p\)ならば\(q\)」を\(p \Rightarrow q\)で、
                 「\(p\)と\(q\)は同値」を\(p \Leftrightarrow q\)で、
-                「任意の\(x\)に対し\(P(x)\)である」を\(\forall x P(x)\)で、
+                述語\(P\)について「任意の\(x\)に対し\(P(x)\)である」を\(\forall x P(x)\)で、
                 「\(P(x)\)であるような\(x\)が存在する」を\(\exists x P(x)\)で、
                 「\(P(x)\)であるような\(x\)がただ一つ存在する」を\(\exists! x P(x)\)で表すことにします。
+                さらに、\(\forall x (x \in A \Rightarrow P(x))\)を\(\forall x \in A P(x)\)で、
+                \(\exists x (x \in A \wedge P(x))\)を\(\exists x \in A P(x)\)で、
+                \(\exists! x (x \in A \wedge P(x))\)を\(\exists! x \in A P(x)\)でそれぞれ略記します。
             </p>
             <p>
                 次に、集合論の<em>公理</em>と呼ばれる命題を列挙していきます。なお、公理からの論理的帰結として導かれる命題のことを<em>定理</em>と言います。
@@ -87,7 +90,7 @@
                     なお、非順序対公理は後に挙げる置換公理から証明可能なので論理的には不要ですが、議論の分かりやすさのためにこれも公理に含めておくことにします。
                 </p>
             </section>
-            <section class="axiom">
+            <section class="theorem">
                 <h1>定理(非順序対の一意性)</h1>
                 <p>
                     \[ \forall a \forall b \exists! S \forall x(x \in S \Leftrightarrow x = a \vee x = b)。 \]
@@ -106,8 +109,100 @@
             <p>非順序対の一意性が示せましたので、この集合を指す記号を新たに導入します。</p>
             <section class="definition">
                 <h1>定義(非順序対)</h1>
-                <p>任意の\(a\)と\(b\)に対し、\(\forall x(x \in S \Leftrightarrow x = a \vee x = b)\)を満たす唯一の集合\(S\)を\(a\)と\(b\)の非順序対と言い、\(\{a,b\}\)と書くことにします。</p>
+                <p>
+                    任意の集合\(a\)と\(b\)に対し、\(\forall x(x \in S \Leftrightarrow x = a \vee x = b)\)を満たす唯一の集合\(S\)を
+                    \(a\)と\(b\)の非順序対と言い、\(\{a,b\}\)と書くことにします。
+                </p>
             </section>
+            <section class="axiom">
+                <h1>公理(和集合公理)</h1>
+                <p>
+                    \[ \forall \mathscr{A} \exists S \forall x[x \in S \Leftrightarrow \exists A \in \mathscr{A} (x \in A)]。 \]
+                    すなわち、任意の集合\(\mathscr{A}\)が与えられた時、\(\mathscr{A}\)の要素の要素の全体もまた集合になるということです。
+                </p>
+            </section>
+            <section class="theorem">
+                <h1>定理(和集合の一意性)</h1>
+                <p>
+                    \[ \forall \mathscr{A} \exists S! \forall x[x \in S \Leftrightarrow \exists A \in \mathscr{A} (x \in A)]。 \]
+                </p>
+                <section class="proof">
+                    <h1>証明</h1>
+                    <p>空集合や非順序対の一意性の証明と同様なので省略します。</p>
+                </section>
+            </section>
+            <section class="definition">
+                <h1>定義(和集合)</h1>
+                <p>
+                    任意の集合\(\mathscr{A}\)に対し、\(\forall x[x \in S \Leftrightarrow \exists A \in \mathscr{A} (x \in A)]\)を
+                    満たす唯一の集合\(S\)を\(\mathscr{A}\)の和集合と言い、\(\bigcup\mathscr{A}\)と書くことにします。
+                </p>
+            </section>
+            <section class="definition">
+                <h1>定義(和集合)</h1>
+                <p>
+                    任意の集合\(A\)と\(B\)に対し、\(\bigcup\{A,B\}\)を\(A\)と\(B\)の和集合と言い、\(A \cup B\)と書くことにします。
+                </p>
+            </section>
+            <section class="theorem">
+                <h1>定理(和集合)</h1>
+                <p>
+                    \[ \forall A \forall B \forall x(x \in A \cup B \Leftrightarrow x \in A \vee x \in B)。 \]
+                </p>
+                <section class="proof">
+                    <h1>証明</h1>
+                    <p>\[x \in A \cup B \iff x \in \bigcup\{A,B\} \iff \exists X \in \{A,B\}(x \in X) \iff x \in A \vee x \in B。\]</p>
+                </section>
+            </section>
+            <section class="definition">
+                <h1>定義(単元集合)</h1>
+                <p>
+                    \[\{a\} := \{a,a\}。\]
+                </p>
+            </section>
+            <section class="definition">
+                <h1>定義</h1>
+                <p>
+                    \[\{a,b,c\} := \{a,b\} \cup \{c\}。\]
+                </p>
+            </section>
+            <section class="definition">
+                <h1>定義</h1>
+                <p>
+                    \[\{a,b,c,d\} := \{a,b,c\} \cup \{d\}。\]
+                </p>
+            </section>
+            <section class="definition">
+                <h1>定義(部分集合)</h1>
+                <p>
+                    \[A \subseteq B :\Leftrightarrow \forall x \in A (x \in B)。\]
+                </p>
+            </section>
+            <section class="axiom">
+                <h1>公理(冪集合公理)</h1>
+                <p>
+                    \[ \forall A \exists \mathscr{S} \forall X(X \in \mathscr{S} \Leftrightarrow X \subseteq A)。 \]
+                    すなわち、任意の集合\(A\)が与えられた時、\(A\)の部分集合の全体もまた集合になるということです。
+                </p>
+            </section>
+            <section class="theorem">
+                <h1>定理(冪集合の一意性)</h1>
+                <p>
+                    \[ \forall A \exists! \mathscr{S} \forall X(X \in \mathscr{S} \Leftrightarrow X \subseteq A)。 \]
+                </p>
+                <section class="proof">
+                    <h1>証明</h1>
+                    <p>空集合や非順序対の一意性の証明と同様なので省略します。</p>
+                </section>
+            </section>
+            <section class="definition">
+                <h1>定義(冪集合)</h1>
+                <p>
+                    任意の集合\(A\)に対し、\(\forall X(X \in \mathscr{S} \Leftrightarrow X \subseteq A)\)を
+                    満たす唯一の集合\(\mathscr{S}\)を\(A\)の和集合と言い、\(\mathcal{P} A\)と書くことにします。
+                </p>
+            </section>
+            <p>以下、書きかけです。</p>
         </article>
     </body>
 </html>
