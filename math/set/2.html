@@ -143,7 +143,7 @@
                             & \Leftrightarrow x \in A \vee x \in -A \\
                             & \Leftrightarrow x \in A \vee x \not\in A \\
                             & \Leftrightarrow \top \\
-                            & \Leftarrow x \in \mathbb{U}。
+                            & \Leftrightarrow x \in \mathbb{U}。
                         \end{align}\]
                     </p>
                 </section>
@@ -161,7 +161,7 @@
                             & x \in A \cup C \\
                             & \Leftrightarrow x \in A \vee x \in C \\
                             & \Rightarrow x \in B \vee x \in D \\
-                            & \Leftrightarrow x \in A \cup C。
+                            & \Leftrightarrow x \in B \cup D。
                         \end{align}\]
                     </p>
                 </section>
@@ -170,6 +170,165 @@
                 <h1>定理(\(\cup\)の単調性)</h1>
                 <p>
                     \[ A \subseteq B \Rightarrow A \cup C \subseteq B \cup C。 \]
+                </p>
+                <section class="proof">
+                    <h1>証明</h1>
+                    <p>
+                        先の定理で\(C=D\)とする。
+                    </p>
+                </section>
+            </section>
+            <section class="theorem">
+                <h1>定理(\(\cap\)の可換律)</h1>
+                <p>
+                    \[ A \cap B = B \cap A。 \]
+                </p>
+                <section class="proof">
+                    <h1>証明</h1>
+                    <p>
+                        任意の\(x\)に対し:
+                        \[\begin{align}
+                            & x \in A \cap B \\
+                            & \Leftrightarrow x \in A \wedge x \in B \\
+                            & \Leftrightarrow x \in B \wedge x \in A \\
+                            & \Leftrightarrow x \in B \cap A。
+                        \end{align}\]
+                    </p>
+                </section>
+            </section>
+            <section class="theorem">
+                <h1>定理(\(\cap\)の結合律)</h1>
+                <p>
+                    \[ (A \cap B) \cap C = A \cap (B \cap C)。 \]
+                </p>
+                <section class="proof">
+                    <h1>証明</h1>
+                    <p>
+                        任意の\(x\)に対し:
+                        \[\begin{align}
+                            & x \in (A \cap B) \cap C \\
+                            & \Leftrightarrow x \in A \cap B \wedge x \in C \\
+                            & \Leftrightarrow (x \in A \wedge x \in B) \wedge x \in C \\
+                            & \Leftrightarrow x \in A \wedge (x \in B \wedge x \in C) \\
+                            & \Leftrightarrow x \in A \wedge x \in B \cap C \\
+                            & \Leftrightarrow x \in A \cap (B \cap C)。
+                        \end{align}\]
+                    </p>
+                </section>
+            </section>
+            <section class="theorem">
+                <h1>定理(\(\cap\)の冪等律)</h1>
+                <p>
+                    \[ A \cap A = A。 \]
+                </p>
+                <section class="proof">
+                    <h1>証明</h1>
+                    <p>
+                        任意の\(x\)に対し:
+                        \[\begin{align}
+                            & x \in A \cap A \\
+                            & \Leftrightarrow x \in A \wedge x \in A \\
+                            & \Leftrightarrow x \in A。
+                        \end{align}\]
+                    </p>
+                </section>
+            </section>
+            <section class="theorem">
+                <h1>定理(\(\cap\)の零元)</h1>
+                <p>
+                    \[ A \cap \emptyset = \emptyset。 \]
+                </p>
+                <section class="proof">
+                    <h1>証明</h1>
+                    <p>
+                        任意の\(x\)に対し:
+                        \[\begin{align}
+                            & x \in A \cap \emptyset \\
+                            & \Leftrightarrow x \in A \wedge x \in \emptyset \\
+                            & \Leftrightarrow x \in A \wedge \bot \\
+                            & \Leftrightarrow \bot \\
+                            & \Leftrightarrow x \in \emptyset。
+                        \end{align}\]
+                    </p>
+                </section>
+            </section>
+            <section class="theorem">
+                <h1>定理(\(\cap\)の単位元)</h1>
+                <p>
+                    \(A \subseteq \mathbb{U}\)とすると、
+                    \[ A \cap \mathbb{U} = A。 \]
+                </p>
+                <section class="proof">
+                    <h1>証明</h1>
+                    <p>
+                        任意の\(x \in \mathbb{U}\)に対し:
+                        \[\begin{align}
+                            & x \in A \cap \mathbb{U} \\
+                            & \Leftrightarrow x \in A \wedge x \in \mathbb{U} \\
+                            & \Leftrightarrow x \in A \wedge \top \\
+                            & \Leftrightarrow x \in A。
+                        \end{align}\]
+                    </p>
+                </section>
+            </section>
+            <section class="theorem">
+                <h1>定理(強化)</h1>
+                <p>
+                    \[ A \cap B \subseteq A。 \]
+                </p>
+                <section class="proof">
+                    <h1>証明</h1>
+                    <p>
+                        任意の\(x\)に対し:
+                        \[\begin{align}
+                            & x \in A \cap B \\
+                            & \Leftrightarrow x \in A \wedge x \in B \\
+                            & \Rightarrow x \in A。
+                        \end{align}\]
+                    </p>
+                </section>
+            </section>
+            <section class="theorem">
+                <h1>定理(矛盾律)</h1>
+                <p>
+                    \[ A \cap (-A) = \emptyset。 \]
+                </p>
+                <section class="proof">
+                    <h1>証明</h1>
+                    <p>
+                        任意の\(x\)に対し:
+                        \[\begin{align}
+                            & x \in A \cap (-A) \\
+                            & \Leftrightarrow x \in A \wedge x \in -A \\
+                            & \Leftrightarrow x \in A \wedge x \not\in A \\
+                            & \Leftrightarrow \bot \\
+                            & \Leftrightarrow x \in \emptyset。
+                        \end{align}\]
+                    </p>
+                </section>
+            </section>
+            <section class="theorem">
+                <h1>定理</h1>
+                <p>
+                    \[ A \subseteq B \wedge C \subseteq D \Rightarrow A \cap C \subseteq B \cap D。 \]
+                </p>
+                <section class="proof">
+                    <h1>証明</h1>
+                    <p>
+                        \(A \subseteq B \wedge C \subseteq D\)を仮定すると、任意の\(x\)に対し:
+                        \[\begin{align}
+                            & x \in A \cup C \\
+                            & \Leftrightarrow x \in A \wedge x \in C \\
+                            & \Rightarrow x \in B \wedge x \in D \\
+                            & \Leftrightarrow x \in B \cup D。
+                        \end{align}\]
+                    </p>
+                </section>
+            </section>
+            <section class="theorem">
+                <h1>定理(\(\cap\)の単調性)</h1>
+                <p>
+                    \[ A \subseteq B \Rightarrow A \cap C \subseteq B \cap C。 \]
                 </p>
                 <section class="proof">
                     <h1>証明</h1>
