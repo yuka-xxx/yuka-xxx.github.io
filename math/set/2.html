@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>集合論@ゆかの勉強部屋 </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/css/base.css">
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script id="MathJax-script" async
+                src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    </head>
+    <body>
+        <header>
+            <hgroup>
+                <h2>集合論</h2>
+                <h1>ゆかの勉強部屋</h1>
+            </hgroup>
+        </header>
+        <article>
+            <h1>集合の演算</h1>
+            <section class="theorem">
+                <h1>定理(\(\cup\)の可換律)</h1>
+                <p>
+                    \[ A \cup B = B \cup A。 \]
+                </p>
+                <section class="proof">
+                    <h1>証明</h1>
+                    <p>
+                        任意の\(x\)に対し:
+                        \[\begin{align}
+                            & x \in A \cup B \\
+                            & \Leftrightarrow x \in A \vee x \in B \\
+                            & \Leftrightarrow x \in B \vee x \in A \\
+                            & \Leftrightarrow x \in B \cup A。
+                        \end{align}\]
+                    </p>
+                </section>
+            </section>
+            <section class="theorem">
+                <h1>定理(\(\cup\)の結合律)</h1>
+                <p>
+                    \[ (A \cup B) \cup C = A \cup (B \cup C)。 \]
+                </p>
+                <section class="proof">
+                    <h1>証明</h1>
+                    <p>
+                        任意の\(x\)に対し:
+                        \[\begin{align}
+                            & x \in (A \cup B) \cup C \\
+                            & \Leftrightarrow x \in A \cup B \vee x \in C \\
+                            & \Leftrightarrow (x \in A \vee x \in B) \vee x \in C \\
+                            & \Leftrightarrow x \in A \vee (x \in B \vee x \in C) \\
+                            & \Leftrightarrow x \in A \vee x \in B \cup C \\
+                            & \Leftrightarrow x \in A \cup (B \cup C)。
+                        \end{align}\]
+                    </p>
+                </section>
+            </section>
+            <section class="theorem">
+                <h1>定理(\(\cup\)の冪等律)</h1>
+                <p>
+                    \[ A \cup A = A。 \]
+                </p>
+                <section class="proof">
+                    <h1>証明</h1>
+                    <p>
+                        任意の\(x\)に対し:
+                        \[\begin{align}
+                            & x \in A \cup A \\
+                            & \Leftrightarrow x \in A \vee x \in A \\
+                            & \Leftrightarrow x \in A。
+                        \end{align}\]
+                    </p>
+                </section>
+            </section>
+            <section class="theorem">
+                <h1>定理(\(\cup\)の零元)</h1>
+                <p>
+                    \(A \subseteq \mathbb{U}\)とすると、
+                    \[ A \cup \mathbb{U} = \mathbb{U}。 \]
+                </p>
+                <section class="proof">
+                    <h1>証明</h1>
+                    <p>
+                        任意の\(x \in \mathbb{U}\)に対し:
+                        \[\begin{align}
+                            & x \in A \cup \mathbb{U} \\
+                            & \Leftrightarrow x \in A \vee x \in \mathbb{U} \\
+                            & \Leftrightarrow x \in A \vee \top \\
+                            & \Leftrightarrow \top \\
+                            & \Leftrightarrow x \in \mathbb{U}。
+                        \end{align}\]
+                    </p>
+                </section>
+            </section>
+            <section class="theorem">
+                <h1>定理(\(\cup\)の単位元)</h1>
+                <p>
+                    \[ A \cup \emptyset = A。 \]
+                </p>
+                <section class="proof">
+                    <h1>証明</h1>
+                    <p>
+                        任意の\(x\)に対し:
+                        \[\begin{align}
+                            & x \in A \cup \emptyset \\
+                            & \Leftrightarrow x \in A \vee x \in \emptyset \\
+                            & \Leftrightarrow x \in A \vee \bot \\
+                            & \Leftrightarrow x \in A。
+                        \end{align}\]
+                    </p>
+                </section>
+            </section>
+            <section class="theorem">
+                <h1>定理(弱化)</h1>
+                <p>
+                    \[ A \subseteq A \cup B。 \]
+                </p>
+                <section class="proof">
+                    <h1>証明</h1>
+                    <p>
+                        任意の\(x\)に対し:
+                        \[\begin{align}
+                            & x \in A \cup B \\
+                            & \Leftrightarrow x \in A \vee x \in B \\
+                            & \Leftarrow x \in A。
+                        \end{align}\]
+                    </p>
+                </section>
+            </section>
+            <section class="theorem">
+                <h1>定理(排中律)</h1>
+                <p>
+                    \(A \subseteq \mathbb{U}\)とすると、
+                    \[ A \cup (-A) = \mathbb{U}。 \]
+                </p>
+                <section class="proof">
+                    <h1>証明</h1>
+                    <p>
+                        任意の\(x \in \mathbb{U}\)に対し:
+                        \[\begin{align}
+                            & x \in A \cup (-A) \\
+                            & \Leftrightarrow x \in A \vee x \in -A \\
+                            & \Leftrightarrow x \in A \vee x \not\in A \\
+                            & \Leftrightarrow \top \\
+                            & \Leftarrow x \in \mathbb{U}。
+                        \end{align}\]
+                    </p>
+                </section>
+            </section>
+            <section class="theorem">
+                <h1>定理</h1>
+                <p>
+                    \[ A \subseteq B \wedge C \subseteq D \Rightarrow A \cup C \subseteq B \cup D。 \]
+                </p>
+                <section class="proof">
+                    <h1>証明</h1>
+                    <p>
+                        \(A \subseteq B \wedge C \subseteq D\)を仮定すると、任意の\(x\)に対し:
+                        \[\begin{align}
+                            & x \in A \cup C \\
+                            & \Leftrightarrow x \in A \vee x \in C \\
+                            & \Rightarrow x \in B \vee x \in D \\
+                            & \Leftrightarrow x \in A \cup C。
+                        \end{align}\]
+                    </p>
+                </section>
+            </section>
+            <section class="theorem">
+                <h1>定理(\(\cup\)の単調性)</h1>
+                <p>
+                    \[ A \subseteq B \Rightarrow A \cup C \subseteq B \cup C。 \]
+                </p>
+                <section class="proof">
+                    <h1>証明</h1>
+                    <p>
+                        先の定理で\(C=D\)とする。
+                    </p>
+                </section>
+            </section>
+            <p>以下、書きかけです。</p>
+        </article>
+    </body>
+</html>
