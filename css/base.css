@@ -62,7 +62,7 @@ body > article, body > nav, body > p, body > header > hgroup {
     margin: 0 auto;
 }
 
-body > p {
+section > p {
     margin-top: 1em;
     margin-bottom: 1em;
 }

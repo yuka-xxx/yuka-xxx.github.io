@@ -22,26 +22,60 @@
                 <p>&mdash;長門有希の台詞、<cite>笹の葉ラプソディ(涼宮ハルヒの退屈収録)</cite>より</p>
             </blockquote>
             <h1>集合論の公理系</h1>
+            <p>集合論で用いる記号は次の通りです。</p>
+            <ol>
+                <li>変数:\(v_0,v_1,v_2,\dots\)</li>
+                <li>結合子:\(\neg,\vee\)</li>
+                <li>量化子:\(\exists\)</li>
+                <li>括弧:\((,)\)</li>
+                <li>等号:\(=\)</li>
+                <li>二項述語:\(\in\)</li>
+            </ol>
+            <p>集合論の論理式は次のように帰納的に定義されます。</p>
+            <ol>
+                <li>\(x,y\)が変数の時、\(x=y\)及び\(x \in y\)は論理式。</li>
+                <li>\(\phi,\psi\)が論理式の時、\((\neg\phi)\)及び\((\phi\vee\psi)\)は論理式。</li>
+                <li>\(\phi\)が論理式の時、\(((\exists)\phi)\)は論理式。</li>
+                <li>上記の1.と2.と3.によって論理式とされるものだけが論理式。</li>
+            </ol>
+            <p>可読性を上げる為に括弧は適時省略し、いくつかの略記法も導入します。</p>
+            <ol>
+                <li>\(x \neq y\)は\(\neg x=y\)の略記。</li>
+                <li>\(x \not\in y\)は\(\neg x \in y\)の略記。</li>
+                <li>\((\phi\wedge\psi)\)は\(\neg(\neg\phi\vee\neg\psi)\)の略記。</li>
+                <li>\((\phi\Rightarrow\psi)\)は\(\neg\phi\vee\psi\)の略記。</li>
+                <li>\((\phi\Leftrightarrow\psi)\)は\((\phi\Rightarrow\psi)\wedge(\psi\Rightarrow\phi)\)の略記。</li>
+                <li>\(((\forall x)\phi)\)は\(\neg\exists x\neg\phi\)の略記。</li>
+                <li>\(((\exists! x)\phi)\)は\(\exists x(\phi \wedge \forall y(\phi \Rightarrow x=y))\)の略記。</li>
+                <li>\(\forall x \in A \phi\)は\(\forall x (x \in A \Rightarrow \phi)\)の略記。</li>
+                <li>\(\exists x \in A \phi\)は\(\exists x (x \in A \wedge \phi)\)の略記。</li>
+                <li>\(\exists! x \in A \phi\)は\(\exists! x (x \in A \wedge \phi)\)の略記。</li>
+            </ol>
             <p>
-                集合を記号\(a,b,c,\dots\)や\(A,B,C,\dots\)や\(\mathscr{A,B,C,\dots}\)などで、集合の要素関係を記号\(\in\)で表すことにします。
-                集合論の他の概念はこれらの記号を用いて定義しますが、これらの記号自体は未定義のままであることに注意してください(参考:<a href="https://en.wikipedia.org/wiki/Primitive_notion">primitive notion</a>)。
+                さらに、変数をメタ記号\(a,b,c,\dots\)や\(A,B,C,\dots\)や\(\mathscr{A,B,C,\dots}\)などで参照することにし、
+                集合とは変数の値のことであると解釈します。
+                また、\(a \in A\)を「\(a\)は\(A\)の要素である」、
+                \(\neg \phi\)を「\(\phi\)の否定」、
+                \(\phi \vee \psi\)を「\(\phi\)または\(\psi\)」、
+                \(\phi \wedge \psi\)を「\(\phi\)かつ\(\psi\)」、
+                \(\phi \Rightarrow \psi\)を「\(\phi\)ならば\(\psi\)」、
+                \(\phi \Leftrightarrow \psi\)を「\(\phi\)と\(\psi\)は同値」、
+                \(\forall x \phi\)を「任意の\(x\)に対し\(\phi\)である」、
+                \(\exists x \phi\)を「\(\phi\)であるような\(x\)が存在する」、
+                \(\exists! x \phi\)を「\(\phi\)であるような\(x\)がただ一つ存在する」とそれぞれ解釈します。
             </p>
             <p>
-                また、命題を簡潔に表現するためにいくつかの記号を導入します。
-                すなわち、命題\(p\)の否定を\(\neg p\)で、
-                「\(p\)または\(q\)」を\(p \vee q\)で、
-                「\(p\)かつ\(q\)」を\(p \wedge q\)で、
-                「\(p\)ならば\(q\)」を\(p \Rightarrow q\)で、
-                「\(p\)と\(q\)は同値」を\(p \Leftrightarrow q\)で、
-                述語\(P\)について「任意の\(x\)に対し\(P(x)\)である」を\(\forall x P(x)\)で、
-                「\(P(x)\)であるような\(x\)が存在する」を\(\exists x P(x)\)で、
-                「\(P(x)\)であるような\(x\)がただ一つ存在する」を\(\exists! x P(x)\)で表すことにします。
-                さらに、\(\forall x (x \in A \Rightarrow P(x))\)を\(\forall x \in A P(x)\)で、
-                \(\exists x (x \in A \wedge P(x))\)を\(\exists x \in A P(x)\)で、
-                \(\exists! x (x \in A \wedge P(x))\)を\(\exists! x \in A P(x)\)でそれぞれ略記します。
+                次に、変数の自由出現の概念を定義します。
+                <ol>
+                    <li>\(x\)が\(y=z\)に自由に現れる iff \(x\)が\(y\)と同じ変数または\(x\)が\(z\)と同じ変数。</li>
+                    <li>\(x\)が\(y \in z\)に自由に現れる iff \(x\)が\(y\)と同じ記号または\(x\)が\(z\)と同じ記号。</li>
+                    <li>\(x\)が\(\neg\phi\)に自由に現れる iff \(x\)が\(\phi\)に自由に現れる。</li>
+                    <li>\(x\)が\(\phi\vee\psi\)に自由に現れる iff \(x\)が\(\phi\)に自由に現れるまたは\(x\)が\(\psi\)に自由に現れる。</li>
+                    <li>\(x\)が\(\exists y\phi\)に自由に現れる iff \(x\)が\(\phi\)に自由に現れるかつ\(x\)と\(y\)が異なる変数。</li>
+                </ol>
             </p>
             <p>
-                次に、集合論の<em>公理</em>と呼ばれる命題を列挙していきます。なお、公理からの論理的帰結として導かれる命題のことを<em>定理</em>と言います。
+                では、集合論の<em>公理</em>と呼ばれる論理式を列挙していきます。なお、公理からの論理的帰結として導かれる論理式のことを<em>定理</em>と言います。
             </p>
             <section class="axiom">
                 <h1>公理(外延性公理)</h1>
@@ -151,7 +185,16 @@
                 </p>
                 <section class="proof">
                     <h1>証明</h1>
-                    <p>\[x \in A \cup B \iff x \in \bigcup\{A,B\} \iff \exists X \in \{A,B\}(x \in X) \iff x \in A \vee x \in B。\]</p>
+                    <p>\[
+                        \begin{align}
+                            & x \in A \cup B \\
+                            & \Leftrightarrow x \in \bigcup\{A,B\} \\
+                            & \Leftrightarrow \exists X \in \{A,B\}(x \in X) \\
+                            & \Leftrightarrow \exists X(x \in X \wedge (X = A \vee X = B)) \\
+                            & \Leftrightarrow \exists X(x \in X \wedge X = A) \vee \exists X(x \in X \wedge X = B) \\
+                            & \Leftrightarrow x \in A \vee x \in B。
+                        \end{align}
+                    \]</p>
                 </section>
             </section>
             <section class="definition">
@@ -200,6 +243,21 @@
                 <p>
                     任意の集合\(A\)に対し、\(\forall X(X \in \mathscr{S} \Leftrightarrow X \subseteq A)\)を
                     満たす唯一の集合\(\mathscr{S}\)を\(A\)の和集合と言い、\(\mathcal{P} A\)と書くことにします。
+                </p>
+            </section>
+            <section class="axiom">
+                <h1>公理図式(分出公理図式)</h1>
+                <p>
+                    \(S\)が自由に現れない任意の論理式\(\phi\)に対し、次の論理式は公理となる:
+                    \[ \forall A \forall t_1 \cdots \forall t_n \exists S \forall x(x \in S \Leftrightarrow x \in A \wedge \phi)。 \]
+                    すなわち、任意の集合\(A\)が与えられた時、\(A\)の要素のうち条件\(\phi\)を満たすものの全体もまた集合になるということです。
+                </p>
+                <p>
+                    なお、分出公理図式は後に挙げる置換公理図式から証明可能なので論理的には不要です。
+                </p>
+                <p>
+                    \(S\)が存在するとき、外延性公理によってそれは一意に定まりますので、集合内包表記を用いることが出来ます:
+                    \[S = \{ x \in S \mid \phi \}。\]
                 </p>
             </section>
             <p>以下、書きかけです。</p>
