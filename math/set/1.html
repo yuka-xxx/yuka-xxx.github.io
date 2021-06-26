@@ -75,7 +75,7 @@
                 </ol>
             </p>
             <p>
-                では、集合論の<em>公理</em>と呼ばれる論理式を列挙していきます。なお、公理からの論理的帰結として導かれる論理式のことを<em>定理</em>と言います。
+                それでは<a href="https://en.wikipedia.org/wiki/Zermelo%E2%80%93Fraenkel_set_theory">ZFC</a>集合論の<em>公理</em>と呼ばれる論理式を列挙していきます。なお、公理からの論理的帰結として導かれる論理式のことを<em>定理</em>と言います。
             </p>
             <section class="axiom">
                 <h1>公理(外延性公理)</h1>
@@ -260,7 +260,59 @@
                     \[S = \{ x \in S \mid \phi \}。\]
                 </p>
             </section>
-            <p>以下、書きかけです。</p>
+            <section class="theorem">
+                <h1>定理(共通部分の存在)</h1>
+                <p>
+                    \[ \forall \mathscr{A}\Bigl[\mathscr{A}\neq\emptyset \Rightarrow
+                        \exists! S \forall x[x \in S \Leftrightarrow \forall A \in \mathscr{A}(x \in A)]\Bigr]。 \]
+                </p>
+                <section class="proof">
+                    <h1>証明</h1>
+                    <p>
+                        集合\(\mathscr{A}\)を任意に1つとり、\(\mathscr{A}\neq\emptyset\)を仮定します。
+                        空集合公理より\(\exists A(A \in \mathscr{A})\)ですから、そのような\(A\)を1つ固定します。
+                        すると分出公理図式と外延性公理によって、
+                        \[\exists! S \forall x[x \in S \Leftrightarrow x \in A \wedge \forall A \in \mathscr{A}(x \in A)] \]
+                        が得られますが、\(A \in \mathscr{A}\)より\(\forall A \in \mathscr{A}(x \in A) \Rightarrow x \in A\)なので、この式は
+                        \[\exists! S \forall x[x \in S \Leftrightarrow \forall A \in \mathscr{A}(x \in A)]\]
+                        と同値です。
+                    </p>
+                </section>
+            </section>
+            <section class="definition">
+                <h1>定義(共通部分)</h1>
+                <p>
+                    \(\mathscr{A}\neq\emptyset\)である任意の集合\(\mathscr{A}\)に対し、
+                    \(\forall x[x \in S \Leftrightarrow \forall A \in \mathscr{A}(x \in A)]\)を
+                    満たす唯一の集合\(S\)を\(\mathscr{A}\)の共通部分と言い、\(\bigcap\mathscr{A}\)と書くことにします。
+                </p>
+            </section>
+            <section class="definition">
+                <h1>定義(共通部分)</h1>
+                <p>
+                    任意の集合\(A\)と\(B\)に対し、\(\bigcap\{A,B\}\)を\(A\)と\(B\)の共通部分と言い、\(A \cap B\)と書くことにします。
+                </p>
+            </section>
+            <section class="theorem">
+                <h1>定理(共通部分)</h1>
+                <p>
+                    \[ \forall A \forall B \forall x(x \in A \cap B \Leftrightarrow x \in A \wedge x \in B)。 \]
+                </p>
+                <section class="proof">
+                    <h1>証明</h1>
+                    <p>\[
+                        \begin{align}
+                            & x \in A \cap B \\
+                            & \Leftrightarrow x \in \bigcap\{A,B\} \\
+                            & \Leftrightarrow \forall X \in \{A,B\}(x \in X) \\
+                            & \Leftrightarrow \forall X(X = A \vee X = B \Rightarrow x \in X) \\
+                            & \Leftrightarrow \forall X(X = A \Rightarrow x \in X) \wedge \forall X(X = B \Rightarrow x \in X) \\
+                            & \Leftrightarrow x \in A \wedge x \in B。
+                        \end{align}
+                    \]</p>
+                </section>
+            </section>
+            <p>集合論の公理には他に無限公理、選択公理、置換公理図式、正則性公理がありますが、これらは今後必要になった時に改めて導入することにします。</p>
         </article>
     </body>
 </html>
