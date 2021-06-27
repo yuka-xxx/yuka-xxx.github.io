@@ -112,23 +112,6 @@
                 </section>
             </section>
             <section class="theorem">
-                <h1>定理(弱化)</h1>
-                <p>
-                    \[ A \subseteq A \cup B。 \]
-                </p>
-                <section class="proof">
-                    <h1>証明</h1>
-                    <p>
-                        任意の\(x\)に対し:
-                        \[\begin{align}
-                            & x \in A \cup B \\
-                            & \Leftrightarrow x \in A \vee x \in B \\
-                            & \Leftarrow x \in A。
-                        \end{align}\]
-                    </p>
-                </section>
-            </section>
-            <section class="theorem">
                 <h1>定理(排中律)</h1>
                 <p>
                     \(A \subseteq \mathbb{U}\)とすると、
@@ -145,36 +128,6 @@
                             & \Leftrightarrow \top \\
                             & \Leftrightarrow x \in \mathbb{U}。
                         \end{align}\]
-                    </p>
-                </section>
-            </section>
-            <section class="theorem">
-                <h1>定理</h1>
-                <p>
-                    \[ A \subseteq B \wedge C \subseteq D \Rightarrow A \cup C \subseteq B \cup D。 \]
-                </p>
-                <section class="proof">
-                    <h1>証明</h1>
-                    <p>
-                        \(A \subseteq B \wedge C \subseteq D\)を仮定すると、任意の\(x\)に対し:
-                        \[\begin{align}
-                            & x \in A \cup C \\
-                            & \Leftrightarrow x \in A \vee x \in C \\
-                            & \Rightarrow x \in B \vee x \in D \\
-                            & \Leftrightarrow x \in B \cup D。
-                        \end{align}\]
-                    </p>
-                </section>
-            </section>
-            <section class="theorem">
-                <h1>定理(\(\cup\)の単調性)</h1>
-                <p>
-                    \[ A \subseteq B \Rightarrow A \cup C \subseteq B \cup C。 \]
-                </p>
-                <section class="proof">
-                    <h1>証明</h1>
-                    <p>
-                        先の定理で\(C=D\)とする。
                     </p>
                 </section>
             </section>
@@ -272,23 +225,6 @@
                 </section>
             </section>
             <section class="theorem">
-                <h1>定理(強化)</h1>
-                <p>
-                    \[ A \cap B \subseteq A。 \]
-                </p>
-                <section class="proof">
-                    <h1>証明</h1>
-                    <p>
-                        任意の\(x\)に対し:
-                        \[\begin{align}
-                            & x \in A \cap B \\
-                            & \Leftrightarrow x \in A \wedge x \in B \\
-                            & \Rightarrow x \in A。
-                        \end{align}\]
-                    </p>
-                </section>
-            </section>
-            <section class="theorem">
                 <h1>定理(矛盾律)</h1>
                 <p>
                     \[ A \cap (-A) = \emptyset。 \]
@@ -304,36 +240,6 @@
                             & \Leftrightarrow \bot \\
                             & \Leftrightarrow x \in \emptyset。
                         \end{align}\]
-                    </p>
-                </section>
-            </section>
-            <section class="theorem">
-                <h1>定理</h1>
-                <p>
-                    \[ A \subseteq B \wedge C \subseteq D \Rightarrow A \cap C \subseteq B \cap D。 \]
-                </p>
-                <section class="proof">
-                    <h1>証明</h1>
-                    <p>
-                        \(A \subseteq B \wedge C \subseteq D\)を仮定すると、任意の\(x\)に対し:
-                        \[\begin{align}
-                            & x \in A \cup C \\
-                            & \Leftrightarrow x \in A \wedge x \in C \\
-                            & \Rightarrow x \in B \wedge x \in D \\
-                            & \Leftrightarrow x \in B \cup D\text{。}
-                        \end{align}\]
-                    </p>
-                </section>
-            </section>
-            <section class="theorem">
-                <h1>定理(\(\cap\)の単調性)</h1>
-                <p>
-                    \[ A \subseteq B \Rightarrow A \cap C \subseteq B \cap C\text{。} \]
-                </p>
-                <section class="proof">
-                    <h1>証明</h1>
-                    <p>
-                        先の定理で\(C=D\)とする。
                     </p>
                 </section>
             </section>

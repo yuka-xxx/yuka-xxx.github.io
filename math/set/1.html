@@ -94,14 +94,12 @@
             <section class="definition">
                 <h1>定義(部分集合)</h1>
                 <p>
-                    \[A \subseteq B :\Leftrightarrow \forall x \in A (x \in B)。\]
+                    \[A \subseteq B :\Leftrightarrow \forall x \in A (x \in B)\text{。}\]
                 </p>
             </section>
             <section class="theorem">
                 <h1>定理(外延性)</h1>
-                <p>\[
-                        \forall A,B,X[A,B \subseteq X \wedge \forall x \in X(x \in A \Leftrightarrow x \in B) \Rightarrow A = B]。
-                \]</p>
+                <p>\[\forall A,B,X[A,B \subseteq X \wedge \forall x \in X(x \in A \Leftrightarrow x \in B) \Rightarrow A = B]\text{。}\]</p>
                 <section class="proof">
                     <h1>証明</h1>
                     <p>
@@ -115,15 +113,115 @@
                             & \Leftrightarrow \quad\because \text{仮定より} x \in A \Rightarrow x \in X \wedge x \in B \Rightarrow x \in X \\
                             & \forall x(x \in A \Leftrightarrow x \in B) \\
                             & \Leftrightarrow \quad\because \text{外延性公理} \\
-                            & A=B。
+                            & A=B\text{。}
                         \end{align}
                     \]</p>
+                </section>
+            </section>
+            <section class="theorem">
+                <h1>定理(indirect inequality)</h1>
+                <p>\[\forall A,B[A \subseteq B \Leftrightarrow \forall X(X \subseteq A \Rightarrow X \subseteq B)]\text{。}\]</p>
+                <section class="proof">
+                    <h1>証明</h1>
+                    <p>
+                        (\(\Rightarrow\)):\(A \subseteq B\)を仮定すると、任意の\(X\)に対し、
+                        \[
+                            \begin{align}
+                                & X \subseteq A \\
+                                & \Rightarrow \quad\because \text{仮定}A \subseteq B\text{と}\subseteq\text{の推移律} \\
+                                & X \subseteq B\text{。}
+                            \end{align}
+                        \]
+                    </p>
+                    <p>
+                        (\(\Leftarrow\)):
+                        \[
+                            \begin{align}
+                                & \forall X(X \subseteq A \Rightarrow X \subseteq B)] \\
+                                & \Rightarrow \quad\because A\text{で具現化} \\
+                                & A \subseteq A \Rightarrow A \subseteq B \\
+                                & \Leftrightarrow \quad\because \subseteq\text{の反射律} \\
+                                & A \subseteq B\text{。}
+                            \end{align}
+                        \]
+                    </p>
+                </section>
+            </section>
+            <section class="theorem">
+                <h1>定理(indirect inequality)</h1>
+                <p>\[\forall A,B[A \subseteq B \Leftrightarrow \forall X(B \subseteq X \Rightarrow A \subseteq X)]\text{。}\]</p>
+                <section class="proof">
+                    <h1>証明</h1>
+                    <p>
+                        (\(\Rightarrow\)):\(A \subseteq B\)を仮定すると、任意の\(X\)に対し、
+                        \[
+                            \begin{align}
+                                & B \subseteq X \\
+                                & \Rightarrow \quad\because \text{仮定}A \subseteq B\text{と}\subseteq\text{の推移律} \\
+                                & A \subseteq X\text{。}
+                            \end{align}
+                        \]
+                    </p>
+                    <p>
+                        (\(\Leftarrow\)):
+                        \[
+                            \begin{align}
+                                & \forall X(B \subseteq X \Rightarrow A \subseteq X)] \\
+                                & \Rightarrow \quad\because B\text{で具現化} \\
+                                & B \subseteq B \Rightarrow A \subseteq B \\
+                                & \Leftrightarrow \quad\because \subseteq\text{の反射律} \\
+                                & A \subseteq B\text{。}
+                            \end{align}
+                        \]
+                    </p>
+                </section>
+            </section>
+            <section class="theorem">
+                <h1>定理(indirect equality)</h1>
+                <p>\[\forall A,B[A = B \Leftrightarrow \forall X(X \subseteq A \Leftrightarrow X \subseteq B)]\text{。}\]</p>
+                <section class="proof">
+                    <h1>証明</h1>
+                    <p>
+                        任意の\(A,B\)に対し:
+                        \[
+                            \begin{align}
+                                & \forall X(X \subseteq A \Leftrightarrow X \subseteq B) \\
+                                & \Leftrightarrow \quad\because \text{相互含意と}\wedge\text{上の}\forall{の分配律} \\
+                                & \forall X(X \subseteq A \Rightarrow X \subseteq B) \wedge \forall X(X \subseteq B \Rightarrow X \subseteq A) \\
+                                & \Leftrightarrow \quad\because \text{indirect inequality} \\
+                                & A \subseteq B \wedge B \subseteq A \\
+                                & \Leftrightarrow \quad\because \subseteq\text{の反対称律} \\
+                                & A = B\text{。}
+                            \end{align}
+                        \]
+                    </p>
+                </section>
+            </section>
+            <section class="theorem">
+                <h1>定理(indirect equality)</h1>
+                <p>\[\forall A,B[A = B \Leftrightarrow \forall X(A \subseteq X \Leftrightarrow B \subseteq X)]\text{。}\]</p>
+                <section class="proof">
+                    <h1>証明</h1>
+                    <p>
+                        任意の\(A,B\)に対し:
+                        \[
+                            \begin{align}
+                                & \forall X(A \subseteq X \Leftrightarrow B \subseteq X) \\
+                                & \Leftrightarrow \quad\because \text{相互含意と}\wedge\text{上の}\forall{の分配律} \\
+                                & \forall X(A \subseteq X \Rightarrow B \subseteq X) \wedge \forall X(B \subseteq X \Rightarrow A \subseteq X) \\
+                                & \Leftrightarrow \quad\because \text{indirect inequality} \\
+                                & B \subseteq A \wedge A \subseteq B \\
+                                & \Leftrightarrow \quad\because \subseteq\text{の反対称律} \\
+                                & A = B\text{。}
+                            \end{align}
+                        \]
+                    </p>
                 </section>
             </section>
             <section class="axiom">
                 <h1>公理(空集合公理)</h1>
                 <p>
-                    \[ \exists S \forall x(x \not\in S)。 \]
+                    \[ \exists S \forall x(x \not\in S)\text{。}\]
                     すなわち、要素を1つも持たない集合が存在するということです。
                 </p>
                 <p>
@@ -133,9 +231,7 @@
             <p>外延性公理と空集合公理から次の定理が導かれます。</p>
             <section class="theorem">
                 <h1>定理(空集合の一意性)</h1>
-                <p>
-                    \[ \exists! S \forall x(x \not\in S)。 \]
-                </p>
+                <p>\[ \exists! S \forall x(x \not\in S)\text{。}\]</p>
                 <section class="proof">
                     <h1>証明</h1>
                     <p>
@@ -220,9 +316,7 @@
             </section>
             <section class="theorem">
                 <h1>定理(和集合)</h1>
-                <p>
-                    \[ \forall A,B,x(x \in A \cup B \Leftrightarrow x \in A \vee x \in B)。 \]
-                </p>
+                <p>\[ \forall A,B,x(x \in A \cup B \Leftrightarrow x \in A \vee x \in B)。 \]</p>
                 <section class="proof">
                     <h1>証明</h1>
                     <p>\[
@@ -237,22 +331,78 @@
                     \]</p>
                 </section>
             </section>
+            <section class="theorem">
+                <h1>定理(弱化)</h1>
+                <p>\[ A \subseteq A \cup B。 \]</p>
+                <section class="proof">
+                    <h1>証明</h1>
+                    <p>
+                        任意の\(x\)に対し:
+                        \[\begin{align}
+                            & x \in A \cup B \\
+                            & \Leftrightarrow x \in A \vee x \in B \\
+                            & \Leftarrow x \in A。
+                        \end{align}\]
+                    </p>
+                </section>
+            </section>
+            <section class="theorem">
+                <h1>定理</h1>
+                <p>\[ A \subseteq B \wedge C \subseteq D \Rightarrow A \cup C \subseteq B \cup D\text{。} \]</p>
+                <section class="proof">
+                    <h1>証明</h1>
+                    <p>
+                        \(A \subseteq B \wedge C \subseteq D\)を仮定すると、任意の\(x\)に対し:
+                        \[\begin{align}
+                            & x \in A \cup C \\
+                            & \Leftrightarrow x \in A \vee x \in C \\
+                            & \Rightarrow x \in B \vee x \in D \\
+                            & \Leftrightarrow x \in B \cup D\text{。}
+                        \end{align}\]
+                    </p>
+                </section>
+            </section>
+            <section class="theorem">
+                <h1>定理(\(\cup\)の単調性)</h1>
+                <p>\[ A \subseteq B \Rightarrow A \cup C \subseteq B \cup C\text{。} \]</p>
+                <section class="proof">
+                    <h1>証明</h1>
+                    <p>
+                        先の定理で\(C=D\)とする。
+                    </p>
+                </section>
+            </section>
+            <section class="theorem">
+                <h1>定理</h1>
+                <p>\[ A \in \mathscr{A} \Rightarrow A \subseteq \bigcup\mathscr{A}\text{。} \]</p>
+                <section class="proof">
+                    <h1>証明</h1>
+                    <p>
+                        \(A \in \mathscr{A}\)を仮定すると、任意のxに対し:
+                        \[\begin{align}
+                            & x \in \bigcup\mathscr{A} \\
+                            & \Leftrightarrow \quad\because \bigcup\text{の定義} \\
+                            & \exists A \in \mathscr{A}(x \in A) \\
+                            & \Leftarrow \quad\because \exists\text{-導入} \\
+                            & A \in \mathscr{A} \wedge x \in A \\
+                            & \Leftrightarrow \quad\because \text{仮定}A \in \mathscr{A} \\
+                            & x \in A\text{。}
+                        \end{align}\]
+                    </p>
+                </section>
+            </section>
             <section class="definition">
                 <h1>定義(単元集合)</h1>
-                <p>
-                    \[\{a\} := \{a,a\}。\]
-                </p>
+                <p>\[\{a\} := \{a,a\}\text{。}\]</p>
+            </section>
+            <section class="definition">
+                <h1>定義</h1>
+                <p>\[\{a,b,c\} := \{a,b\} \cup \{c\}\text{。}\]</p>
             </section>
             <section class="definition">
                 <h1>定義</h1>
                 <p>
-                    \[\{a,b,c\} := \{a,b\} \cup \{c\}。\]
-                </p>
-            </section>
-            <section class="definition">
-                <h1>定義</h1>
-                <p>
-                    \[\{a,b,c,d\} := \{a,b,c\} \cup \{d\}。\]
+                    \[\{a,b,c,d\} := \{a,b,c\} \cup \{d\}\text{。}\]
                 </p>
             </section>
             <section class="axiom">
@@ -264,9 +414,7 @@
             </section>
             <section class="theorem">
                 <h1>定理(冪集合の一意性)</h1>
-                <p>
-                    \[ \forall A \exists! \mathscr{S} \forall X(X \in \mathscr{S} \Leftrightarrow X \subseteq A)。 \]
-                </p>
+                <p>\[ \forall A \exists! \mathscr{S} \forall X(X \in \mathscr{S} \Leftrightarrow X \subseteq A)。 \]</p>
                 <section class="proof">
                     <h1>証明</h1>
                     <p>空集合や非順序対の一意性の証明と同様なので省略します。</p>
@@ -279,19 +427,48 @@
                     満たす唯一の集合\(\mathscr{S}\)を\(A\)の和集合と言い、\(\mathcal{P} A\)と書くことにします。
                 </p>
             </section>
+            <section class="theorem">
+                <h1>定理(\(\mathcal{P}\)の単調性)</h1>
+                <p>\[A \subseteq B \Leftrightarrow \mathcal{P}A \subseteq \mathcal{P}B\text{。}\]</p>
+                <section class="proof">
+                    <h1>証明</h1>
+                    <p>\[\begin{align}
+                        & \mathcal{P}A \subseteq \mathcal{P}B \\
+                        & \Leftrightarrow \quad\because \subseteq\text{の定義} \\
+                        & \forall X(X \in \mathcal{P}A \Rightarrow X \in \mathcal{P}B) \\
+                        & \Leftrightarrow \quad\because \mathcal{P}\text{の定義} \\
+                        & \forall X(X \subseteq A \Rightarrow X \subseteq B) \\
+                        & \Leftrightarrow \quad\because \text{indirect inequality} \\
+                        & A \subseteq B\text{。}
+                    \end{align}\]</p>
+                </section>
+            </section>
+            <section class="theorem">
+                <h1>定理</h1>
+                <p>\[A \in \mathscr{A} \Rightarrow \mathcal{P}A \in \mathcal{P}\mathcal{P}\bigcup\mathscr{A}\text{。}\]</p>
+                <section class="proof">
+                    <h1>証明</h1>
+                    <p>\[\begin{align}
+                        & \mathcal{P}A \in \mathcal{P}\mathcal{P}\bigcup\mathscr{A} \\
+                        & \Leftrightarrow \quad\because \mathcal{P}\text{の定義} \\
+                        & \mathcal{P}A \subseteq \mathcal{P}\bigcup\mathscr{A} \\
+                        & \Leftrightarrow \quad\because \mathcal{P}\text{の単調性} \\
+                        & A \subseteq \bigcup\mathscr{A} \\
+                        & \Leftarrow \quad\because A \in \mathscr{A} \Rightarrow A \subseteq \bigcup\mathscr{A} \\
+                        & A \in \mathscr{A}\text{。}
+                    \end{align}\]</p>
+                </section>
+            </section>
             <section class="axiom">
                 <h1>公理図式(分出公理図式)</h1>
                 <p>
                     \(S\)が自由に現れない任意の論理式\(\phi\)に対し、次の論理式は公理となる:
                     \[ \forall A,t_1,\dots,t_n \exists S \forall x(x \in S \Leftrightarrow x \in A \wedge \phi)。 \]
                     すなわち、任意の集合\(A\)が与えられた時、\(A\)の要素のうち条件\(\phi\)を満たすものの全体もまた集合になるということです。
+                    そしてそのような集合\(S\)は、外延性公理によって一意に定まります。
                 </p>
                 <p>
                     なお、分出公理図式は後に挙げる置換公理図式から証明可能なので論理的には不要です。
-                </p>
-                <p>
-                    \(S\)が存在するとき、外延性公理によってそれは一意に定まりますので、集合内包表記を用いることが出来ます:
-                    \[S = \{ x \in S \mid \phi \}。\]
                 </p>
             </section>
             <section class="theorem">
@@ -346,12 +523,102 @@
                     \]</p>
                 </section>
             </section>
+            <section class="theorem">
+                <h1>定理(強化)</h1>
+                <p>\[ A \cap B \subseteq A。 \]</p>
+                <section class="proof">
+                    <h1>証明</h1>
+                    <p>
+                        任意の\(x\)に対し:
+                        \[\begin{align}
+                            & x \in A \cap B \\
+                            & \Leftrightarrow x \in A \wedge x \in B \\
+                            & \Rightarrow x \in A。
+                        \end{align}\]
+                    </p>
+                </section>
+            </section>
+            <section class="theorem">
+                <h1>定理</h1>
+                <p>\[ A \subseteq B \wedge C \subseteq D \Rightarrow A \cap C \subseteq B \cap D。 \]</p>
+                <section class="proof">
+                    <h1>証明</h1>
+                    <p>
+                        \(A \subseteq B \wedge C \subseteq D\)を仮定すると、任意の\(x\)に対し:
+                        \[\begin{align}
+                            & x \in A \cup C \\
+                            & \Leftrightarrow x \in A \wedge x \in C \\
+                            & \Rightarrow x \in B \wedge x \in D \\
+                            & \Leftrightarrow x \in B \cup D\text{。}
+                        \end{align}\]
+                    </p>
+                </section>
+            </section>
+            <section class="theorem">
+                <h1>定理(\(\cap\)の単調性)</h1>
+                <p>\[ A \subseteq B \Rightarrow A \cap C \subseteq B \cap C\text{。} \]</p>
+                <section class="proof">
+                    <h1>証明</h1>
+                    <p>先の定理で\(C=D\)とする。</p>
+                </section>
+            </section>
             <section class="definition">
                 <h1>定義(補集合)</h1>
                 <p>
-                    \[X-A := \{x \in X \mid x \not \in A\}。\]
-                    \(X-A\)を\(A\)の\(X\)における補集合と呼びます。
+                    任意の集合\(X\)と\(A\)に対し、分出公理
+                    \[\exists S \forall x (x \in S \Leftrightarrow x \in X \wedge x \not\in A)\]
+                    によって存在が保証される唯一の集合\(S\)を\(A\)の\(X\)における補集合と呼び、\(X-A\)と書くことにします。
                     また、\(A \subseteq X\)かつ\(X\)が文脈から明らかな時、\(X-A\)を単に\(-A\)と書くことにします。
+                </p>
+            </section>
+            <section class="definition">
+                <h1>定義(集合内包表記)</h1>
+                <p>
+                    \(\phi\)を\(S\)が自由に現れない任意の論理式とし、任意の集合\(A,t_1,\dots,t_n\)が与えられた際に分出公理によって存在が保証される、
+                    \[ \forall x(x \in S \Leftrightarrow x \in A \wedge \phi)。 \]
+                    を満たす唯一の集合\(S\)を、
+                    \[\{x \in A \mid \phi\}\]
+                    と書くことにします。特に\(\phi \Rightarrow x \in A\)の時は、
+                    \[\{x \mid \phi\}\]
+                    と略記しても良いことにします。
+                </p>
+                <p>
+                    今、\(A\)と\(\mathscr{B}\)を任意の集合とすると、分出公理によって集合
+                    \[\{X \in \mathcal{P}(A \cup \bigcup\mathscr{B}) \mid \exists B \in \mathscr{B}(X = A \cup B) \} \]
+                    が得られますが、\(B \in \mathscr{B}\)の時\(B \in \mathscr{B} \Rightarrow B \subseteq \bigcup\mathscr{B}\)と
+                    \(\cup\)の単調性より\(A \cup B \subseteq A \cup \bigcup\mathscr{B}\)
+                    すなわち\(A \cup B \in \mathcal{P}(A \cup \bigcup\mathscr{B})\)が成り立ちますので、この集合は先の取り決めに従い
+                    \[\{X \mid \exists B \in \mathscr{B}(X = A \cup B) \} \]
+                    と略記出来ます。さらにこの集合を
+                    \[\{ A \cup B \mid B \in \mathscr{B} \} \]
+                    と略記しても良いことにします。
+                </p>
+                <p>
+                    また、\(A\)と\(\mathscr{B}\)を任意の集合とすると、分出公理によって集合
+                    \[\{X \in \mathcal{P}A \mid \exists B \in \mathscr{B}(X = A \cap B) \} \]
+                    が得られますが、\(A \cap B \subseteq A\)より\(A \cap B \in \mathcal{P}A\)なので、この集合は
+                    \[\{X \mid \exists B \in \mathscr{B}(X = A \cap B) \} \]
+                    と略記出来ます。さらにこの集合を
+                    \[\{ A \cap B \mid B \in \mathscr{B} \} \]
+                    と略記しても良いことにします。
+                </p>
+                <p>
+                    さらに、\(A\)と\(\mathscr{B}\)を任意の集合とすると、分出公理によって集合
+                    \[\{X \in \mathcal{P}A \mid \exists B \in \mathscr{B}(X = A - B) \} \]
+                    が得られますが、\(A - B \subseteq A\)より\(A - B \in \mathcal{P}A\)なので、この集合は
+                    \[\{X \mid \exists B \in \mathscr{B}(X = A - B) \} \]
+                    と略記出来ます。さらにこの集合を
+                    \[\{ A - B \mid B \in \mathscr{B} \} \]
+                    と略記しても良いことにします。
+                </p>
+                <p>
+                    加えて、\(\mathscr{A}\)を任意の集合とすると、分出公理によって集合
+                    \[\{X \in \mathcal{P}\mathcal{P}\bigcup\mathscr{A} \mid \exists A \in \mathscr{A}(X = \mathcal{P}A) \} \]
+                    が得られますが、\(A \in \mathscr{A} \Rightarrow \mathcal{P}A \in \mathcal{P}\mathcal{P}\bigcup\mathscr{A}\)よりこの集合は
+                    \[\{X \mid \exists A \in \mathscr{A}(X = \mathcal{P}A) \} \]
+                    と略記出来ます。さらにこの集合を
+                    \[\{ \mathcal{P}A \mid A \in \mathscr{A} \} \]
+                    と略記しても良いことにします。
                 </p>
             </section>
             <p>集合論の公理には他に無限公理、選択公理、置換公理図式、正則性公理がありますが、これらは今後必要になった時に改めて導入することにします。</p>
