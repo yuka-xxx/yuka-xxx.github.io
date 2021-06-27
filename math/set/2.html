@@ -320,7 +320,7 @@
                             & x \in A \cup C \\
                             & \Leftrightarrow x \in A \wedge x \in C \\
                             & \Rightarrow x \in B \wedge x \in D \\
-                            & \Leftrightarrow x \in B \cup D。
+                            & \Leftrightarrow x \in B \cup D\text{。}
                         \end{align}\]
                     </p>
                 </section>
@@ -328,12 +328,52 @@
             <section class="theorem">
                 <h1>定理(\(\cap\)の単調性)</h1>
                 <p>
-                    \[ A \subseteq B \Rightarrow A \cap C \subseteq B \cap C。 \]
+                    \[ A \subseteq B \Rightarrow A \cap C \subseteq B \cap C\text{。} \]
                 </p>
                 <section class="proof">
                     <h1>証明</h1>
                     <p>
                         先の定理で\(C=D\)とする。
+                    </p>
+                </section>
+            </section>
+            <section class="theorem">
+                <h1>定理(\(\cap\)上の\(\cup\)の分配律)</h1>
+                <p>
+                    \[ A \cup (B \cap C) = (A \cup B) \cap (A \cup C)\text{。} \]
+                </p>
+                <section class="proof">
+                    <h1>証明</h1>
+                    <p>
+                        任意の\(x\)に対し:
+                        \[\begin{align}
+                            & x \in A \cup (B \cap C) \\
+                            & \Leftrightarrow x \in A \vee x \in B \cap C \\
+                            & \Leftrightarrow x \in A \vee (x \in B \wedge x \in C) \\
+                            & \Leftrightarrow (x \in A \vee x \in B) \wedge (x \in A \vee x \in C) \\
+                            & \Leftrightarrow x \in A \cup B \wedge x \in A \cup C \\
+                            & \Leftrightarrow x \in (A \cup B) \cap (A \cup C)\text{。}
+                        \end{align}\]
+                    </p>
+                </section>
+            </section>
+            <section class="theorem">
+                <h1>定理(\(\cup\)上の\(\cap\)の分配律)</h1>
+                <p>
+                    \[ A \cap (B \cup C) = (A \cap B) \cup (A \cap C)\text{。} \]
+                </p>
+                <section class="proof">
+                    <h1>証明</h1>
+                    <p>
+                        任意の\(x\)に対し:
+                        \[\begin{align}
+                            & x \in A \cap (B \cup C) \\
+                            & \Leftrightarrow x \in A \wedge x \in B \cup C \\
+                            & \Leftrightarrow x \in A \wedge (x \in B \vee x \in C) \\
+                            & \Leftrightarrow (x \in A \wedge x \in B) \vee (x \in A \wedge x \in C) \\
+                            & \Leftrightarrow x \in A \cap B \vee x \in A \cap C \\
+                            & \Leftrightarrow x \in (A \cap B) \cup (A \cap C)\text{。}
+                        \end{align}\]
                     </p>
                 </section>
             </section>
