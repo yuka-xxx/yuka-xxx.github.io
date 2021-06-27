@@ -52,6 +52,10 @@
                 <li>\(\forall x \in A \phi\)は\(\forall x (x \in A \Rightarrow \phi)\)の略記。</li>
                 <li>\(\exists x \in A \phi\)は\(\exists x (x \in A \wedge \phi)\)の略記。</li>
                 <li>\(\exists! x \in A \phi\)は\(\exists! x (x \in A \wedge \phi)\)の略記。</li>
+                <li>\(\forall x_1,\dots,x_n\phi\)は\(\forall x_1 \cdots \forall x_n\phi\)の略記。</li>
+                <li>\(\exists x_1,\dots,x_n\phi\)は\(\exists x_1 \cdots \exists x_n\phi\)の略記。</li>
+                <li>\(x \star y \star z\)は\(x \star y \wedge y \star z\)の略記(ここで\(\star\)は二項述語)。</li>
+                <li>\(x_1,\dots,x_n \star A\)は\(x_1 \star A \wedge \cdots \wedge x_n \star A\)の略記(ここで\(\star\)は二項述語)。</li>
             </ol>
             <p>
                 さらに、変数をメタ記号\(a,b,c,\dots\)や\(A,B,C,\dots\)や\(\mathscr{A,B,C,\dots}\)などで参照することにし、
@@ -62,6 +66,7 @@
                 \(\phi \wedge \psi\)を「\(\phi\)かつ\(\psi\)」、
                 \(\phi \Rightarrow \psi\)を「\(\phi\)ならば\(\psi\)」、
                 \(\phi \Leftrightarrow \psi\)を「\(\phi\)と\(\psi\)は同値」、
+                \(\bot\)を「偽」、\(\top\)を「真」、
                 \(\forall x \phi\)を「任意の\(x\)に対し\(\phi\)である」、
                 \(\exists x \phi\)を「\(\phi\)であるような\(x\)が存在する」、
                 \(\exists! x \phi\)を「\(\phi\)であるような\(x\)がただ一つ存在する」とそれぞれ解釈します。
@@ -82,7 +87,7 @@
             <section class="axiom">
                 <h1>公理(外延性公理)</h1>
                 <p>
-                    \[ \forall A \forall B [\forall x (x \in A \Leftrightarrow x \in B) \Rightarrow A = B ]。 \]
+                    \[ \forall A, B [\forall x (x \in A \Leftrightarrow x \in B) \Rightarrow A = B ]。 \]
                     すなわち、2つの集合が全く同じ要素を持つならば、それらの集合は等しいということです。
                 </p>
             </section>
@@ -95,8 +100,7 @@
             <section class="theorem">
                 <h1>定理(外延性)</h1>
                 <p>\[
-                        \forall A \forall B \forall X[
-                            A,B \subseteq X \wedge \forall x \in X(x \in A \Leftrightarrow x \in B) \Rightarrow A = B]。
+                        \forall A,B,X[A,B \subseteq X \wedge \forall x \in X(x \in A \Leftrightarrow x \in B) \Rightarrow A = B]。
                 \]</p>
                 <section class="proof">
                     <h1>証明</h1>
@@ -149,7 +153,7 @@
             <section class="axiom">
                 <h1>公理(非順序対公理)</h1>
                 <p>
-                    \[ \forall a \forall b \exists S \forall x(x \in S \Leftrightarrow x = a \vee x = b)。 \]
+                    \[ \forall a,b \exists S \forall x(x \in S \Leftrightarrow x = a \vee x = b)。 \]
                     すなわち、集合\(a\)と\(b\)が与えられた時、\(a\)と\(b\)のみを要素とする集合が存在するということです。
                 </p>
                 <p>
@@ -159,7 +163,7 @@
             <section class="theorem">
                 <h1>定理(非順序対の一意性)</h1>
                 <p>
-                    \[ \forall a \forall b \exists! S \forall x(x \in S \Leftrightarrow x = a \vee x = b)。 \]
+                    \[ \forall a,b \exists! S \forall x(x \in S \Leftrightarrow x = a \vee x = b)。 \]
                 </p>
                 <section class="proof">
                     <h1>証明</h1>
@@ -217,7 +221,7 @@
             <section class="theorem">
                 <h1>定理(和集合)</h1>
                 <p>
-                    \[ \forall A \forall B \forall x(x \in A \cup B \Leftrightarrow x \in A \vee x \in B)。 \]
+                    \[ \forall A,B,x(x \in A \cup B \Leftrightarrow x \in A \vee x \in B)。 \]
                 </p>
                 <section class="proof">
                     <h1>証明</h1>
@@ -279,7 +283,7 @@
                 <h1>公理図式(分出公理図式)</h1>
                 <p>
                     \(S\)が自由に現れない任意の論理式\(\phi\)に対し、次の論理式は公理となる:
-                    \[ \forall A \forall t_1 \cdots \forall t_n \exists S \forall x(x \in S \Leftrightarrow x \in A \wedge \phi)。 \]
+                    \[ \forall A,t_1,\dots,t_n \exists S \forall x(x \in S \Leftrightarrow x \in A \wedge \phi)。 \]
                     すなわち、任意の集合\(A\)が与えられた時、\(A\)の要素のうち条件\(\phi\)を満たすものの全体もまた集合になるということです。
                 </p>
                 <p>
@@ -326,7 +330,7 @@
             <section class="theorem">
                 <h1>定理(共通部分)</h1>
                 <p>
-                    \[ \forall A \forall B \forall x(x \in A \cap B \Leftrightarrow x \in A \wedge x \in B)。 \]
+                    \[ \forall A,B,x(x \in A \cap B \Leftrightarrow x \in A \wedge x \in B)。 \]
                 </p>
                 <section class="proof">
                     <h1>証明</h1>
