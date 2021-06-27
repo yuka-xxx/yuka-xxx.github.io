@@ -86,6 +86,36 @@
                     すなわち、2つの集合が全く同じ要素を持つならば、それらの集合は等しいということです。
                 </p>
             </section>
+            <section class="definition">
+                <h1>定義(部分集合)</h1>
+                <p>
+                    \[A \subseteq B :\Leftrightarrow \forall x \in A (x \in B)。\]
+                </p>
+            </section>
+            <section class="theorem">
+                <h1>定理(外延性)</h1>
+                <p>\[
+                        \forall A \forall B \forall X[
+                            A,B \subseteq X \wedge \forall x \in X(x \in A \Leftrightarrow x \in B) \Rightarrow A = B]。
+                \]</p>
+                <section class="proof">
+                    <h1>証明</h1>
+                    <p>
+                        任意の\(A,B,X\)について\(A,B \subseteq X\)を仮定すると、
+                    \[
+                        \begin{align}
+                            & \forall x \in X(x \in A \Leftrightarrow x \in B) \\
+                            & \Leftrightarrow \quad\because
+                                [\phi \Rightarrow (\psi \Leftrightarrow \eta)] \Leftrightarrow \phi \wedge \psi \Leftrightarrow \phi \wedge \eta \\
+                            & \forall x(x \in X \wedge x \in A \Leftrightarrow x \in X \wedge x \in B) \\
+                            & \Leftrightarrow \quad\because \text{仮定より} x \in A \Rightarrow x \in X \wedge x \in B \Rightarrow x \in X \\
+                            & \forall x(x \in A \Leftrightarrow x \in B) \\
+                            & \Leftrightarrow \quad\because \text{外延性公理} \\
+                            & A=B。
+                        \end{align}
+                    \]</p>
+                </section>
+            </section>
             <section class="axiom">
                 <h1>公理(空集合公理)</h1>
                 <p>
@@ -137,7 +167,11 @@
                         \(a\)と\(b\)を任意の集合とします。
                         非順序対公理より\(\exists! S \forall x(x \in S \Leftrightarrow x = a \vee x = b)\)ですから、これを満たす\(S\)を2つ固定し、\(A\)及び\(B\)と名付けます。
                         \(x\)を任意に1つとると、
-                        \[x \in A \iff x = a \vee x = b \iff x \in B \]
+                        \[\begin{align}
+                            & x \in A \\
+                            & \Leftrightarrow x = a \vee x = b \\
+                            & \Leftrightarrow x \in B 
+                        \end{align}\]
                         ですから、外延性公理によって\(A = B\)が導けます。
                     </p>
                 </section>
@@ -215,12 +249,6 @@
                 <h1>定義</h1>
                 <p>
                     \[\{a,b,c,d\} := \{a,b,c\} \cup \{d\}。\]
-                </p>
-            </section>
-            <section class="definition">
-                <h1>定義(部分集合)</h1>
-                <p>
-                    \[A \subseteq B :\Leftrightarrow \forall x \in A (x \in B)。\]
                 </p>
             </section>
             <section class="axiom">
