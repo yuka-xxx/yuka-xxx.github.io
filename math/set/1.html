@@ -87,7 +87,7 @@
             <section class="axiom">
                 <h1>公理(外延性公理)</h1>
                 <p>
-                    \[ \forall A, B [\forall x (x \in A \Leftrightarrow x \in B) \Rightarrow A = B ]。 \]
+                    \[ \forall A, B [\forall x (x \in A \Leftrightarrow x \in B) \Rightarrow A = B ]\text{。} \]
                     すなわち、2つの集合が全く同じ要素を持つならば、それらの集合は等しいということです。
                 </p>
             </section>
@@ -96,6 +96,30 @@
                 <p>
                     \[A \subseteq B :\Leftrightarrow \forall x \in A (x \in B)\text{。}\]
                 </p>
+            </section>
+            <section class="theorem">
+                <h1>定理(\(\subseteq\)の反射律)</h1>
+                <p>\[\forall A(A \subseteq A)\text{。}\]</p>
+                <section class="proof">
+                    <h1>証明</h1>
+                    <p>\(\subseteq\)の定義と\(\Rightarrow\)の反射律から直ちに出ます。</p>
+                </section>
+            </section>
+            <section class="theorem">
+                <h1>定理(\(\subseteq\)の推移律)</h1>
+                <p>\[\forall A,B,C(A \subseteq B \wedge B \subseteq C \Rightarrow A \subseteq C)\text{。}\]</p>
+                <section class="proof">
+                    <h1>証明</h1>
+                    <p>\(\subseteq\)の定義と\(\Rightarrow\)の推移律から直ちに出ます。</p>
+                </section>
+            </section>
+            <section class="theorem">
+                <h1>定理(\(\subseteq\)の反対称律)</h1>
+                <p>\[\forall A,B(A \subseteq B \wedge B \subseteq A \Leftrightarrow A = B)\text{。}\]</p>
+                <section class="proof">
+                    <h1>証明</h1>
+                    <p>\(\subseteq\)の定義と相互含意から直ちに出ます。</p>
+                </section>
             </section>
             <section class="theorem">
                 <h1>定理(外延性)</h1>
@@ -245,6 +269,21 @@
             <section class="definition">
                 <h1>定義(空集合)</h1>
                 <p>\(\forall x(x \not\in S)\)を満たす唯一の集合\(S\)を空集合と言い、\(\emptyset\)と書くことにします。</p>
+            </section>
+            <section class="theorem">
+                <h1>定理(\(\subseteq\)の最小元)</h1>
+                <p>\[\forall A(\emptyset \subseteq A)\text{。}\]</p>
+                <section class="proof">
+                    <h1>証明</h1>
+                    <p>任意の\(x\)に対し:</p>
+                    \[\begin{align}
+                        & x \in \emptyset \\
+                        & \Leftrightarrow\quad\because \emptyset\text{の定義} \\
+                        & \bot \\
+                        & \Rightarrow\quad\because \bot\Rightarrow\phi \\
+                        & x \in A
+                    \end{align}\]
+                </section>
             </section>
             <section class="axiom">
                 <h1>公理(非順序対公理)</h1>
