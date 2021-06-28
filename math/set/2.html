@@ -283,6 +283,52 @@
                     </p>
                 </section>
             </section>
+            <section class="theorem">
+                <h1>定理(de Morgan律)</h1>
+                <p>
+                    \[ X - (A \cup B) = (X - A) \cap (X - B)\text{。} \]
+                    特に\(A,B \subseteq X\)の時、
+                    \[ -(A \cup B) = -A \cap -B\text{。} \]
+                </p>
+                <section class="proof">
+                    <h1>証明</h1>
+                    <p>
+                        任意の\(x\)に対し:
+                        \[\begin{align}
+                            & x \in X - (A \cup B) \\
+                            & \Leftrightarrow x \in X \wedge x \not\in A \cup B \\
+                            & \Leftrightarrow x \in X \wedge \neg(x \in A \vee x \in B) \\
+                            & \Leftrightarrow x \in X \wedge (x \not\in A \wedge x \not\in B) \\
+                            & \Leftrightarrow (x \in X \wedge x \not\in A) \wedge (x \in X \wedge x \not\in B) \\
+                            & \Leftrightarrow x \in X - A \wedge x \in X - B \\
+                            & \Leftrightarrow x \in (X - A) \cap (X - B)\text{。}
+                        \end{align}\]
+                    </p>
+                </section>
+            </section>
+            <section class="theorem">
+                <h1>定理(de Morgan律)</h1>
+                <p>
+                    \[ X - (A \cap B) = (X - A) \cup (X - B)\text{。} \]
+                    特に\(A,B \subseteq X\)の時、
+                    \[ -(A \cap B) = -A \cup -B\text{。} \]
+                </p>
+                <section class="proof">
+                    <h1>証明</h1>
+                    <p>
+                        任意の\(x\)に対し:
+                        \[\begin{align}
+                            & x \in X - (A \cap B) \\
+                            & \Leftrightarrow x \in X \wedge x \not\in A \cap B \\
+                            & \Leftrightarrow x \in X \wedge \neg(x \in A \wedge x \in B) \\
+                            & \Leftrightarrow x \in X \wedge (x \not\in A \vee x \not\in B) \\
+                            & \Leftrightarrow (x \in X \wedge x \not\in A) \vee (x \in X \wedge x \not\in B) \\
+                            & \Leftrightarrow x \in X - A \vee x \in X - B \\
+                            & \Leftrightarrow x \in (X - A) \cup (X - B)\text{。}
+                        \end{align}\]
+                    </p>
+                </section>
+            </section>
             <p>以下、書きかけです。</p>
         </article>
     </body>
