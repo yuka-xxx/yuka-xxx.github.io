@@ -412,6 +412,25 @@
                 </section>
             </section>
             <section class="theorem">
+                <h1>定理(\(\bigcup\)の単調性)</h1>
+                <p>\[ \mathscr{A} \subseteq \mathscr{B} \Rightarrow \bigcup\mathscr{A} \subseteq \bigcup\mathscr{B}\text{。} \]</p>
+                <section class="proof">
+                    <h1>証明</h1>
+                    <p>
+                        \(\mathscr{A} \subseteq \mathscr{B}\)を仮定すると、任意の\(x\)に対し:
+                        \[\begin{align}
+                            & x \in \bigcup\mathscr{A} \\
+                            & \Leftrightarrow\quad\because \bigcup\text{の定義} \\
+                            & \exists X \in \mathscr{A}(x \in X) \\
+                            & \Rightarrow\quad\because \text{単調性}:\text{仮定より}X \in \mathscr{A} \Rightarrow X \in \mathscr{B} \\
+                            & \exists X \in \mathscr{B}(x \in X) \\
+                            & \Leftrightarrow\quad\because \bigcup\text{の定義} \\
+                            & x \in \bigcup\mathscr{B}\text{。}
+                        \end{align}\]
+                    </p>
+                </section>
+            </section>
+            <section class="theorem">
                 <h1>定理</h1>
                 <p>\[ A \in \mathscr{A} \Rightarrow A \subseteq \bigcup\mathscr{A}\text{。} \]</p>
                 <section class="proof">
@@ -601,6 +620,25 @@
                     <p>先の定理で\(C=D\)とする。</p>
                 </section>
             </section>
+            <section class="theorem">
+                <h1>定理(\(\bigcap\)の反単調性)</h1>
+                <p>\[ \emptyset \neq \mathscr{A} \subseteq \mathscr{B} \Rightarrow \bigcap\mathscr{B} \subseteq \bigcap\mathscr{A}\text{。} \]</p>
+                <section class="proof">
+                    <h1>証明</h1>
+                    <p>
+                        \(\emptyset \neq \mathscr{A} \subseteq \mathscr{B}\)を仮定すると、任意の\(x\)に対し:
+                        \[\begin{align}
+                            & x \in \bigcap\mathscr{B} \\
+                            & \Leftrightarrow\quad\because \bigcap\text{の定義} \\
+                            & \forall X \in \mathscr{B}(x \in X) \\
+                            & \Rightarrow\quad\because \text{反単調性}:\text{仮定より}X \in \mathscr{A} \Rightarrow X \in \mathscr{B} \\
+                            & \forall X \in \mathscr{A}(x \in X) \\
+                            & \Leftrightarrow\quad\because \bigcap\text{の定義} \\
+                            & x \in \bigcap\mathscr{A}\text{。}
+                        \end{align}\]
+                    </p>
+                </section>
+            </section>
             <section class="definition">
                 <h1>定義(補集合)</h1>
                 <p>
@@ -609,6 +647,25 @@
                     によって存在が保証される唯一の集合\(S\)を\(A\)の\(X\)における補集合と呼び、\(X-A\)と書くことにします。
                     また、\(A \subseteq X\)かつ\(X\)が文脈から明らかな時、\(X-A\)を単に\(-A\)と書くことにします。
                 </p>
+            </section>
+            <section class="theorem">
+                <h1>定理(\(-\)の反単調性)</h1>
+                <p>\[ A \subseteq B \Rightarrow X - B \subseteq X - A \text{。} \]</p>
+                <section class="proof">
+                    <h1>証明</h1>
+                    <p>
+                        \(A \subseteq B\)を仮定すると、任意の\(x\)に対し:
+                        \[\begin{align}
+                            & x \in X - B \\
+                            & \Leftrightarrow\quad\because -\text{の定義} \\
+                            & x \in X \wedge x \not\in B \\
+                            & \Rightarrow\quad\because \text{仮定より得られる}x \in A \Rightarrow x \in B\text{の対偶} \\
+                            & x \in X \wedge x \not\in A \\
+                            & \Leftrightarrow\quad\because -\text{の定義} \\
+                            & x \in X - A\text{。}
+                        \end{align}\]
+                    </p>
+                </section>
             </section>
             <section class="definition">
                 <h1>定義(集合内包表記)</h1>
