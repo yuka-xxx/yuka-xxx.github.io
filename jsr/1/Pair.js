@@ -2,7 +2,9 @@
 import { type, construct } from "./Base.js"
 
 export const Pair = type()
-export const pair = (x, y) => construct(Pair, p => p.pair(x, y))
+export const pair = (x, y) => construct(Pair, p => p.pair(x, y),
+    { *[Symbol.iterator]() { yield x ; yield y } }
+)
 
 export const cata = f => p => p.match({ pair:(x, y) => f(x, y) })
 

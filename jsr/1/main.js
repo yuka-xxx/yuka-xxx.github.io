@@ -1,9 +1,11 @@
 
+
 import { min, on, lt, flip, compose, inRange, cmult, saturate, sqrt } from './Base.js'
 import { vec3, minus, dot } from './Vec3.js'
 import { fst, pair, snd, cata as cataPair } from './Pair.js'
 import { map } from './Functor.js'
-import { flat, csnoc, filter, range, cartesian, minimumBy } from './Array.js'
+import { seq, flat, csnoc, filter, range, cartesian, minimumBy, zip, iota, forEach, iterate } from './Seq.js'
+import *  as A from './Array.js'
 import * as C from './Color.js'
 import * as S from './Sphere.js'
 
@@ -49,12 +51,13 @@ const ctx = canvas.getContext('2d')
 const img = ctx.createImageData(cw, ch)
 
 compose(
+    forEach(([i, p]) => img.data[i] = p),
+    zip(iota(0)),
     flat,
-    map(compose(C.cata((r,g,b) => [toWebColor(r), toWebColor(g), toWebColor(b), 256]),
+    map(compose(C.cata((r,g,b) => seq(toWebColor(r), toWebColor(g), toWebColor(b), 256)),
                 traceRay(1, Infinity)(O),
                 canvasToViewport)),
     cartesian
 )(range(-ch/2,ch/2), range(-cw/2, cw/2))
-    .forEach((p, i) => img.data[i] = p)
 
 ctx.putImageData(img, 0, 0)
