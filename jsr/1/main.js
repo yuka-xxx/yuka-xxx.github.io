@@ -22,7 +22,8 @@ const spheres = [redSphere, blueSphere, greenSphere]
 
 const canvasToViewport = p => vec3(-snd(p) * vw / cw, -fst(p) * vh / ch, -d)
 
-const intersectRaySphere = (O, D, sphere) => sphere.match({ sphere:({}, r, center) => {
+// intersectRaySphere :: (Vec3, Vec3) -> Sphere -> Pair float float
+const intersectRaySphere = (O, D) => S.cata(({}, r, center) => {
     const CO = minus(O, center)
     const a = dot(D, D)
     const b = 2 * dot(CO, D)
@@ -30,14 +31,14 @@ const intersectRaySphere = (O, D, sphere) => sphere.match({ sphere:({}, r, cente
     const discr = b*b - 4*a*c
     return discr < 0 ? pair(Infinity, Infinity)
                      : pair((-b + sqrt(discr)) / (2*a), (-b - sqrt(discr)) / (2*a))
-}})
+})
 
 const traceRay = (tMin, tMax) => O => D => compose(
     snd,
     minimumBy(on(lt)(fst)),
     flip(csnoc)(pair(Infinity, bgColor)),
     filter(compose(inRange(tMin, tMax), fst)),
-    map(s => cataPair((t1, t2) => pair(min(t1, t2), S.color(s)))(intersectRaySphere(O, D, s)))
+    map(s => cataPair((t1, t2) => pair(min(t1, t2), S.color(s)))(intersectRaySphere(O, D)(s)))
 )(spheres)
 
 const toWebColor = compose(Math.floor, cmult(256), saturate)
@@ -49,7 +50,7 @@ const img = ctx.createImageData(cw, ch)
 
 compose(
     flat,
-    map(compose(C.cata((r,g,b) => [ toWebColor(r), toWebColor(g), toWebColor(b), 256]),
+    map(compose(C.cata((r,g,b) => [toWebColor(r), toWebColor(g), toWebColor(b), 256]),
                 traceRay(1, Infinity)(O),
                 canvasToViewport)),
     cartesian
