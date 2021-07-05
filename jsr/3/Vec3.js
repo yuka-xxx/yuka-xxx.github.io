@@ -37,3 +37,5 @@ export const pdivVS = paired(divVS)
 export const negV = cata((x, y, z) => vec3(-x, -y, -z))
 
 export const normalize = comp(pdivVS, pairF(id, norm))
+
+export const cosBetween = (v, w) => dot(v, w) / (norm(v) * norm(w))

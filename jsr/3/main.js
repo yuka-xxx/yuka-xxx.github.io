@@ -1,8 +1,8 @@
 
 
-import { pow, max, on, lt, flip, comp, inRange, cmult, saturate, sqrt, cdiv, cmod, div, cminus, curry, floor, clt, id } from './Base.js'
-import { vec3, minus, dot, norm, multSV, plus as plusV, minus as minusV, normalize, negV } from './Vec3.js'
-import { pmin, fst, pair, snd, pairF, cata as pairCata } from './Pair.js'
+import { pow, max, on, lt, flip, comp, inRange, cmult, saturate, sqrt, cdiv, cmod, div, cminus, curry, uncurry, floor, id } from './Base.js'
+import { cosBetween, vec3, minus, dot, norm, multSV, plus as plusV, minus as minusV, normalize, negV } from './Vec3.js'
+import { pmin, fst, pair, pairF, cata as pairCata } from './Pair.js'
 import { map } from './Functor.js'
 import { bimap } from './Bifunctor.js'
 import { seq, flat, csnoc, filter, range, minimumBy, zip, iota, forEach, sum } from './Seq.js'
@@ -42,8 +42,8 @@ const intersect = R.cata((O, D) => S.cata(({}, {}, r, C) => {
     return discr < 0 ? pair(Infinity, Infinity)
                      : pair((-b + sqrt(discr)) / (2*a), (-b - sqrt(discr)) / (2*a)) }))
 
-const diffuse = (N, L) => max(0, dot(N, L) / (norm(N) * norm(L)))
-const specular = (R, V, s) => max(0, pow(dot(R, V) / (norm(R) * norm(V)), s))
+const diffuse = (N, L) => max(0, cosBetween(N, L))
+const specular = (R, V, s) => max(0, pow(cosBetween(R, V), s))
 const diffspec = (N, L, V, s) => diffuse(N, L) + specular(minusV(multSV(2*dot(N, L), N), L), V, s)
 
 // illuminate :: (Vec3, Vec3, Vec3, float) -> float
@@ -55,14 +55,14 @@ const illuminate = (P, N, V, s) => comp(
 )(lights)
 
 // trace :: (float, float) -> Ray -> Color
-const trace = (tMin, tMax) => ray => R.cataR(ray)((O, D) => comp(
+const trace = (tMin, tMax) => R.cata((O, D) => comp(
     cataMaybe(bgColor,
-              pairCata((t, s) => { const P = plusV(O, multSV(t, D))
-                                   const N = normalize(minusV(P, S.center(s)))
-                                   return C.multSC(illuminate(P, N, negV(D), S.specular(s)), S.color(s)) })),
+              pairCata(uncurry(t => S.cata((k, s, {}, c) => {
+                  const P = plusV(O, multSV(t, D))
+                  return C.multSC(illuminate(P, normalize(minusV(P, c)), negV(D), s), k) })))),
     minimumBy(on(lt)(fst)),
     filter(comp(inRange(tMin, tMax), fst)),
-    map(pairF(comp(pmin, intersect(ray)), id))
+    map(pairF(comp(pmin, intersect(R.ray(O, D))), id))
 )(spheres))
 
 const canvas = Object.assign(document.createElement('canvas'), { width: cw, height: ch })
