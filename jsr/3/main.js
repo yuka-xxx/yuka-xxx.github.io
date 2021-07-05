@@ -1,7 +1,7 @@
 
 
-import { on, lt, flip, comp, inRange, cmult, saturate, sqrt, cdiv, cmod, div, cminus, curry, floor, clt, id } from './Base.js'
-import { vec3, minus, dot, norm, multSV, plus as plusV, minus as minusV, normalize } from './Vec3.js'
+import { pow, max, on, lt, flip, comp, inRange, cmult, saturate, sqrt, cdiv, cmod, div, cminus, curry, floor, clt, id } from './Base.js'
+import { vec3, minus, dot, norm, multSV, plus as plusV, minus as minusV, normalize, negV } from './Vec3.js'
 import { pmin, fst, pair, snd, pairF, cata as pairCata } from './Pair.js'
 import { map } from './Functor.js'
 import { bimap } from './Bifunctor.js'
@@ -21,10 +21,10 @@ const d = 1
 const O = vec3(0, 0, 0)
 const bgColor = C.color(0.5, 0.5, 0.5)
 
-const redSphere = S.sphere(C.color(1, 0, 0), 1, vec3(0, -1, -3))
-const blueSphere = S.sphere(C.color(0, 0, 1), 1, vec3(2, 0, -4))
-const greenSphere = S.sphere(C.color(0, 1, 0), 1, vec3(-2, 0, -4))
-const yellowSphere = S.sphere(C.color(1, 1, 0), 5000, vec3(0, -5001, 0))
+const redSphere = S.sphere(C.color(1, 0, 0), 500, 1, vec3(0, -1, -3))
+const blueSphere = S.sphere(C.color(0, 0, 1), 500, 1, vec3(2, 0, -4))
+const greenSphere = S.sphere(C.color(0, 1, 0), 10, 1, vec3(-2, 0, -4))
+const yellowSphere = S.sphere(C.color(1, 1, 0), 1000, 5000, vec3(0, -5001, 0))
 const spheres = seq(redSphere, blueSphere, greenSphere, yellowSphere)
 
 const ambientLight = L.ambient(0.2)
@@ -33,23 +33,25 @@ const directionalLight = L.directional(0.2, vec3(1, 4, -4))
 const lights = seq(ambientLight, pointLight, directionalLight)
 
 // intersect :: Ray -> Sphere -> Pair float float
-const intersect = R.cata((O, D) => S.cata(({}, r, C) => {
+const intersect = R.cata((O, D) => S.cata(({}, {}, r, C) => {
     const CO = minus(O, C)
     const a = dot(D, D)
     const b = 2 * dot(CO, D)
     const c = dot(CO, CO) - r*r
     const discr = b*b - 4*a*c
     return discr < 0 ? pair(Infinity, Infinity)
-                     : pair((-b + sqrt(discr)) / (2*a), (-b - sqrt(discr)) / (2*a))
-}))
+                     : pair((-b + sqrt(discr)) / (2*a), (-b - sqrt(discr)) / (2*a)) }))
 
-// lighting :: (Vec3, Vec3) -> float
-const lighting = (P, N) => comp(
+const diffuse = (N, L) => max(0, dot(N, L) / (norm(N) * norm(L)))
+const specular = (R, V, s) => max(0, pow(dot(R, V) / (norm(R) * norm(V)), s))
+const diffspec = (N, L, V, s) => diffuse(N, L) + specular(minusV(multSV(2*dot(N, L), N), L), V, s)
+
+// illuminate :: (Vec3, Vec3, Vec3, float) -> float
+const illuminate = (P, N, V, s) => comp(
     sum,
-    filter(clt(0)),
     map(L.cata(id,
-               (i, p) => { const L = minusV(p, P) ; return i * dot(N, L) / (norm(N) * norm(L)) },
-               (i, L) => i * dot(N, L) / (norm(N) * norm(L))))
+               (i, p) => i * diffspec(N, minusV(p, P), V, s),
+               (i, L) => i * diffspec(N, L, V, s) ))
 )(lights)
 
 // trace :: (float, float) -> Ray -> Color
@@ -57,7 +59,7 @@ const trace = (tMin, tMax) => ray => R.cataR(ray)((O, D) => comp(
     cataMaybe(bgColor,
               pairCata((t, s) => { const P = plusV(O, multSV(t, D))
                                    const N = normalize(minusV(P, S.center(s)))
-                                   return C.multSC(lighting(P, N), S.color(s)) })),
+                                   return C.multSC(illuminate(P, N, negV(D), S.specular(s)), S.color(s)) })),
     minimumBy(on(lt)(fst)),
     filter(comp(inRange(tMin, tMax), fst)),
     map(pairF(comp(pmin, intersect(ray)), id))
