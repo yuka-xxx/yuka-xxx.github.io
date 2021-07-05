@@ -2,7 +2,7 @@
 
 import { pow, max, on, lt, flip, comp, inRange, cmult, saturate, sqrt, cdiv, cmod, div, cminus, curry, uncurry, floor, id } from './Base.js'
 import { cosBetween, vec3, minus, dot, norm, multSV, plus as plusV, minus as minusV, normalize, negV } from './Vec3.js'
-import { pmin, fst, pair, pairF, cata as pairCata } from './Pair.js'
+import { pmin, fst, pair, pairF, cata as cataPair } from './Pair.js'
 import { map } from './Functor.js'
 import { bimap } from './Bifunctor.js'
 import { seq, flat, csnoc, filter, range, minimumBy, zip, iota, forEach, sum } from './Seq.js'
@@ -33,7 +33,7 @@ const directionalLight = L.directional(0.2, vec3(1, 4, -4))
 const lights = seq(ambientLight, pointLight, directionalLight)
 
 // intersect :: Ray -> Sphere -> Pair float float
-const intersect = R.cata((O, D) => S.cata(({}, {}, r, C) => {
+const intersect = R.cata(O => D => S.cata(_ => _ => r => C => {
     const CO = minus(O, C)
     const a = dot(D, D)
     const b = 2 * dot(CO, D)
@@ -50,16 +50,16 @@ const diffspec = (N, L, V, s) => diffuse(N, L) + specular(minusV(multSV(2*dot(N,
 const illuminate = (P, N, V, s) => comp(
     sum,
     map(L.cata(id,
-               (i, p) => i * diffspec(N, minusV(p, P), V, s),
-               (i, L) => i * diffspec(N, L, V, s) ))
+               i => p => i * diffspec(N, minusV(p, P), V, s),
+               i => L => i * diffspec(N, L, V, s) ))
 )(lights)
 
 // trace :: (float, float) -> Ray -> Color
-const trace = (tMin, tMax) => R.cata((O, D) => comp(
+const trace = (tMin, tMax) => R.cata(O => D => comp(
     cataMaybe(bgColor,
-              pairCata(uncurry(t => S.cata((k, s, {}, c) => {
+              cataPair(t => S.cata(k => s => _ => c => {
                   const P = plusV(O, multSV(t, D))
-                  return C.multSC(illuminate(P, normalize(minusV(P, c)), negV(D), s), k) })))),
+                  return C.multSC(illuminate(P, normalize(minusV(P, c)), negV(D), s), k) }))),
     minimumBy(on(lt)(fst)),
     filter(comp(inRange(tMin, tMax), fst)),
     map(pairF(comp(pmin, intersect(R.ray(O, D))), id))
@@ -71,12 +71,12 @@ const img = ctx.createImageData(cw, ch)
 
 const toScreenCoord = pairF(flip(cmod)(cw), flip(cdiv)(cw))
 const toCanvasCoord = bimap(flip(cminus)(div(cw, 2)), cminus(div(ch, 2) - 1))
-const toViewport = pairCata((cx, cy) => vec3(cx * vw / cw, cy * vh / ch, -d))
+const toViewport = cataPair(cx => cy => vec3(cx * vw / cw, cy * vh / ch, -d))
 const toWebColorComponet = comp(floor, cmult(256), saturate)
-const toWebColor = C.cata((r,g,b) => seq(toWebColorComponet(r), toWebColorComponet(g), toWebColorComponet(b), 256))
+const toWebColor = C.cata(r => g => b => seq(toWebColorComponet(r), toWebColorComponet(g), toWebColorComponet(b), 256))
 
 comp(
-    forEach(([i, p]) => img.data[i] = p),
+    forEach(cataPair(i => p => img.data[i] = p)),
     zip(iota(0)),
     flat,
     map(comp(toWebColor,

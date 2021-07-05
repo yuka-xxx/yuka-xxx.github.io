@@ -9,6 +9,6 @@ export const directional = (intensity, direction) => construct(Light, p => p.dir
 
 export const cata = (f, g, h) => l => l.match({
     ambient:(i) => f(i),
-    point:(i, p) => g(i, p),
-    directional:(i, d) => h(i, d)
+    point:(i, p) => g(i)(p),
+    directional:(i, d) => h(i)(d)
 })
