@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>超準微分積分学@ゆかの勉強部屋</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/css/base.css">
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script id="MathJax-script" async
+                src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    </head>
+    <body>
+        <header>
+            <hgroup>
+                <h2>超準微分積分学</h2>
+                <h1>ゆかの勉強部屋</h1>
+            </hgroup>
+        </header>
+        <article>
+            <h1>超実数</h1>
+            <section class="definition">
+                <h1>定義(半群)</h1>
+                <p>
+                    \(\circ\)が集合\(S\)上の二項演算で、結合律
+                    \[\forall a,b,c \in S : (a \circ b) \circ c = a \circ (b \circ c) \]
+                    を満たす代数的構造\((S,\cdot)\)を半群と言います。
+                </p>
+            </section>
+            <section class="definition">
+                <h1>定義(可換半群)</h1>
+                <p>
+                    \((S,\circ)\)が半群で、さらに可換律
+                    \[\forall a,b \in S : a \circ b= b \circ a \]
+                    を満たす時、代数的構造\((S,\circ)\)を可換半群と言います。
+                </p>
+            </section>
+            <section class="definition">
+                <h1>定義(モノイド)</h1>
+                <p>
+                    \((M,\circ)\)が半群かつ\(M\)上の零項演算\(e\)が\(\circ\)の単位元
+                    \[\forall a \in M : a \circ e = e \circ a = a \]
+                    の時、代数的構造\((M,\circ,e)\)をモノイドと言います（ここでは写像\(e:M^0 \rightarrow M\)と\(M\)の１つの元を同一視しているので注意して下さい）。
+                </p>
+            </section>
+            <section class="definition">
+                <h1>定義(可換モノイド)</h1>
+                <p>
+                    \((M,\circ)\)が可換半群かつ\((M,\circ,e)\)がモノイドの時、代数的構造\((M,\circ,e)\)を可換モノイドと言います。
+                </p>
+            </section>
+            <section class="definition">
+                <h1>定義(群)</h1>
+                <p>
+                    \((G,\circ,e)\)がモノイドかつ\(G\)上の単項演算\(i\)が\(G\)の各元をその逆元に写す時、すなわち
+                    \[\forall a \in G : a \circ i(a) = i(a) \circ a = e \]
+                    が成り立つ時、代数的構造\((G,\circ,e,i\)を群と言います。
+                </p>
+            </section>
+            <section class="definition">
+                <h1>定義(可換群)</h1>
+                <p>
+                    \((G,\circ,e)\)が可換モノイドかつ\((G,\circ,e,i)\)が群の時、代数的構造\((G,\circ,e,i)\)を可換群と言います。
+                </p>
+            </section>
+            <section class="definition">
+                <h1>定義(擬環)</h1>
+                <p>
+                    \((R,+,0,-\square)\)が可換群かつ\((R,\cdot)\)が半群で、\(+\)上の\(\cdot\)の左分配律
+                    \[\forall a,b,c \in R : a \cdot (b + c) = a \cdot b + a \cdot c\]
+                    及び右分配律
+                    \[\forall a,b,c \in R : (b + c) \cdot a = b \cdot a + c \cdot a\]
+                    を満たす代数的構造\((R,+,0,-\square,\cdot)\)を擬環と言います。
+                </p>
+            </section>
+            <section class="definition">
+                <h1>定義(可換擬環)</h1>
+                <p>
+                    \((R,\cdot)\)が可換半群かつ\((R,+,0,-\square,\cdot,1)\)が環の時、代数的構造\((R,+,0,-\square,\cdot)\)を可換擬環と言います。
+                </p>
+            </section>
+            <section class="definition">
+                <h1>定義(環)</h1>
+                <p>
+                    \((R,\cdot,1)\)がモノイドで、\((R,+,0,-\square,\cdot)\)が擬環の時、代数的構造\((R,+,0,-\square,\cdot,1)\)を環と言います。
+                </p>
+            </section>
+            <section class="definition">
+                <h1>定義(可換環)</h1>
+                <p>
+                    \((R,\cdot,1)\)が可換モノイドかつ\((R,+,0,-\square,\cdot,1)\)が環の時、代数的構造\((R,+,0,-\square,\cdot,1)\)を可換環と言います。
+                </p>
+            </section>
+            <section class="definition">
+                <h1>定義(体)</h1>
+                <p>
+                    \((R-\{0\},\cdot,1,\square^{-1})\)が可換群かつ\((R,+,0,-\square,\cdot,1)\)が可換環の時、
+                    partial algebraic structure \((R,+,0,-\square,\cdot,1,\square^{-1})\)を体と言います。
+                </p>
+            </section>
+            <p>以下、書きかけです。</p>
+        </article>
+    </body>
+</html>
