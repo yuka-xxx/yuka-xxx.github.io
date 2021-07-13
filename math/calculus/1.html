@@ -18,12 +18,15 @@
         </header>
         <article>
             <h1>超実数</h1>
+            <p>
+                超実数を定義する前に、抽象代数学の概念をいくつかおさらいしておきます。
+            </p>
             <section class="definition">
                 <h1>定義(半群)</h1>
                 <p>
                     \(\circ\)が集合\(S\)上の二項演算で、結合律
                     \[\forall a,b,c \in S : (a \circ b) \circ c = a \circ (b \circ c) \]
-                    を満たす代数的構造\((S,\cdot)\)を半群と言います。
+                    を満たす時、組\((S,\cdot)\)を半群と言います。
                 </p>
             </section>
             <section class="definition">
@@ -31,7 +34,7 @@
                 <p>
                     \((S,\circ)\)が半群で、さらに可換律
                     \[\forall a,b \in S : a \circ b= b \circ a \]
-                    を満たす時、代数的構造\((S,\circ)\)を可換半群と言います。
+                    を満たす時、組\((S,\circ)\)を可換半群と言います。
                 </p>
             </section>
             <section class="definition">
@@ -39,13 +42,13 @@
                 <p>
                     \((M,\circ)\)が半群かつ\(M\)上の零項演算\(e\)が\(\circ\)の単位元
                     \[\forall a \in M : a \circ e = e \circ a = a \]
-                    の時、代数的構造\((M,\circ,e)\)をモノイドと言います（ここでは写像\(e:M^0 \rightarrow M\)と\(M\)の１つの元を同一視しているので注意して下さい）。
+                    の時、組\((M,\circ,e)\)をモノイドと言います（ここでは写像\(e:M^0 \rightarrow M\)と\(M\)の１つの元を同一視しているので注意して下さい）。
                 </p>
             </section>
             <section class="definition">
                 <h1>定義(可換モノイド)</h1>
                 <p>
-                    \((M,\circ)\)が可換半群かつ\((M,\circ,e)\)がモノイドの時、代数的構造\((M,\circ,e)\)を可換モノイドと言います。
+                    \((M,\circ)\)が可換半群かつ\((M,\circ,e)\)がモノイドの時、組\((M,\circ,e)\)を可換モノイドと言います。
                 </p>
             </section>
             <section class="definition">
@@ -53,13 +56,13 @@
                 <p>
                     \((G,\circ,e)\)がモノイドかつ\(G\)上の単項演算\(i\)が\(G\)の各元をその逆元に写す時、すなわち
                     \[\forall a \in G : a \circ i(a) = i(a) \circ a = e \]
-                    が成り立つ時、代数的構造\((G,\circ,e,i\)を群と言います。
+                    が成り立つ時、組\((G,\circ,e,i)\)を群と言います。
                 </p>
             </section>
             <section class="definition">
                 <h1>定義(可換群)</h1>
                 <p>
-                    \((G,\circ,e)\)が可換モノイドかつ\((G,\circ,e,i)\)が群の時、代数的構造\((G,\circ,e,i)\)を可換群と言います。
+                    \((G,\circ,e)\)が可換モノイドかつ\((G,\circ,e,i)\)が群の時、組\((G,\circ,e,i)\)を可換群と言います。
                 </p>
             </section>
             <section class="definition">
@@ -69,32 +72,81 @@
                     \[\forall a,b,c \in R : a \cdot (b + c) = a \cdot b + a \cdot c\]
                     及び右分配律
                     \[\forall a,b,c \in R : (b + c) \cdot a = b \cdot a + c \cdot a\]
-                    を満たす代数的構造\((R,+,0,-\square,\cdot)\)を擬環と言います。
+                    を満たす時、組\((R,+,0,-\square,\cdot)\)を擬環と言います。
                 </p>
             </section>
             <section class="definition">
                 <h1>定義(可換擬環)</h1>
                 <p>
-                    \((R,\cdot)\)が可換半群かつ\((R,+,0,-\square,\cdot,1)\)が環の時、代数的構造\((R,+,0,-\square,\cdot)\)を可換擬環と言います。
+                    \((R,\cdot)\)が可換半群かつ\((R,+,0,-\square,\cdot,1)\)が環の時、組\((R,+,0,-\square,\cdot)\)を可換擬環と言います。
                 </p>
             </section>
             <section class="definition">
                 <h1>定義(環)</h1>
                 <p>
-                    \((R,\cdot,1)\)がモノイドで、\((R,+,0,-\square,\cdot)\)が擬環の時、代数的構造\((R,+,0,-\square,\cdot,1)\)を環と言います。
+                    \((R,\cdot,1)\)がモノイドで、\((R,+,0,-\square,\cdot)\)が擬環の時、組\((R,+,0,-\square,\cdot,1)\)を環と言います。
                 </p>
             </section>
             <section class="definition">
                 <h1>定義(可換環)</h1>
                 <p>
-                    \((R,\cdot,1)\)が可換モノイドかつ\((R,+,0,-\square,\cdot,1)\)が環の時、代数的構造\((R,+,0,-\square,\cdot,1)\)を可換環と言います。
+                    \((R,\cdot,1)\)が可換モノイドかつ\((R,+,0,-\square,\cdot,1)\)が環の時、
+                    組\((R,+,0,-\square,\cdot,1)\)を可換環と言います。
                 </p>
             </section>
             <section class="definition">
                 <h1>定義(体)</h1>
                 <p>
-                    \((R-\{0\},\cdot,1,\square^{-1})\)が可換群かつ\((R,+,0,-\square,\cdot,1)\)が可換環の時、
-                    partial algebraic structure \((R,+,0,-\square,\cdot,1,\square^{-1})\)を体と言います。
+                    \((F-\{0\},\cdot,1,\square^{-1})\)が可換群かつ\((F,+,0,-\square,\cdot,1)\)が可換環の時、
+                    組\((F,+,0,-\square,\cdot,1,\square^{-1})\)を体と言います。
+                </p>
+            </section>
+            <section class="definition">
+                <h1>定義(線型順序集合)</h1>
+                <p>
+                    \(T\)上の二項関係\(<\)について、推移律
+                    \[\forall a,b,c \in T : a < b \wedge b < c \Rightarrow a < c\]
+                    及び三分律
+                    \[\forall a,b \in T: (a < b \equiv a=b \equiv b < a) \wedge \neg(a < b \wedge a=b \wedge b < a)\]
+                    が成り立つ時、組\(T,<\)を線型順序集合と言います。
+                </p>
+            </section>
+            <section class="definition">
+                <h1>定義(順序可換擬環)</h1>
+                <p>
+                    \((R,+,0,-\square,\cdot)\)が可換擬環かつ\((R,<)\)が線型順序集合で、
+                    \[\forall a,b,c \in R: a < b \Rightarrow a+c < b+c\]
+                    及び
+                    \[\forall a,b,c \in R: a < b \wedge 0 < c \Rightarrow a \cdot c < b \cdot c\]
+                    が成り立つ時、組\((R,<,+,0,-\square,\cdot)\)を順序可換擬環と言います。
+                </p>
+            </section>
+            <section class="definition">
+                <h1>定義(順序可換環)</h1>
+                <p>
+                    \((R,<,+,0,-\square,\cdot)\)が順序可換擬環で\((R,+,0,-\square,\cdot,1)\)が可換環の時、
+                    組\((R,<,+,0,-\square,\cdot,1)\)を順序可換環と言います。
+                </p>
+            </section>
+            <section class="definition">
+                <h1>定義(順序体)</h1>
+                <p>
+                    \((R,<,+,0,-\square,\cdot,1)\)が順序可換環で\((F,+,0,-\square,\cdot,1,\square^{-1})\)が体の時、
+                    組\((F,<,+,0,-\square,\cdot,1,\square^{-1})\)を順序体と言います。
+                </p>
+            </section>
+            <section class="definition">
+                <h1>定義(完備順序体)</h1>
+                <p>
+                    \((F,<,+,0,-\square,\cdot,1,\square^{-1})\)が順序体で、\(F\)の任意の空でない部分集合が\(F\)の中に最小上界を持つ時、
+                    組\((F,<,+,0,-\square,\cdot,1,\square^{-1})\)を完備順序体と言います。
+                </p>
+            </section>
+            <section class="definition">
+                <h1>定義(実数)</h1>
+                <p>
+                    証明は別の機会に回しますが完備順序体は(同型を除いて一意に)存在しますので、これを一つ固定し記号\(\mathbb R\)で参照することにします。
+                    また、\(\mathbb R\)の元を実数と呼ぶことにします。
                 </p>
             </section>
             <p>以下、書きかけです。</p>
